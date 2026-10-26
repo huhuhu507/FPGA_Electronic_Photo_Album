@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project>
+    <Project_Created_Time>2026-10-25 07:00:00</Project_Created_Time>
+    <TD_Version>4.6.96021</TD_Version>
+    <UCode>11001110</UCode>
+    <Name>hd_clean</Name>
+    <HardWare>
+        <Family>EG4</Family>
+        <Device>EG4S20BG256</Device>
+    </HardWare>
+    <Source_Files>
+        <Verilog>
+            <File>hd_clean.v</File>
+            <File>sdram_ctrl_clean.v</File>
+            <File>bmp_sdram_loader.v</File>
+            <File>sd_ctrl.v</File>
+            <File>album_ui.v</File>
+            <File>tmds.v</File>
+            <File>video_reader.v</File>
+            <File>signage_osd.v</File>
+            <File>number_bcd.v</File>
+            <File>audio_scope.v</File>
+            <File>audio_synth.v</File>
+            <File>hdmi_tx.v</File>
+            <File>tmds_serializer.v</File>
+            <File>tmds_encoder.v</File>
+        </Verilog>
+        <ADC_FILE>hd_clean.adc</ADC_FILE>
+        <SDC_FILE>hd_clean.sdc</SDC_FILE>
+        <CWC_FILE/>
+    </Source_Files>
+    <TOP_MODULE>
+        <LABEL/>
+        <MODULE>hd_clean</MODULE>
+        <CREATEINDEX>user</CREATEINDEX>
+    </TOP_MODULE>
+    <Project_Settings>
+        <Step_Last_Change>2026-10-26 11:29:22</Step_Last_Change>
+        <Current_Step>60</Current_Step>
+        <Step_Status>true</Step_Status>
+    </Project_Settings>
+</Project>

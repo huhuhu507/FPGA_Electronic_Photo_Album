@@ -1,0 +1,34 @@
+standard
+***Report Model: hd_clean***
+
+IO Statistics
+#IO                    18
+  #input                6
+  #output              12
+  #inout                0
+
+Utilization Statistics
+#lut                11266   out of  19600   57.48%
+#reg                 3617   out of  19600   18.45%
+#le                 12116
+  #lut only          8499   out of  12116   70.15%
+  #reg only           850   out of  12116    7.02%
+  #lut&reg           2767   out of  12116   22.84%
+#dsp                    8   out of     29   27.59%
+#bram                  17   out of     64   26.56%
+  #bram9k              17
+  #fifo9k               0
+#bram32k                0   out of     16    0.00%
+#pad                   22   out of    188   11.70%
+  #ireg                 4
+  #oreg                 4
+  #treg                 0
+#pll                    2   out of      4   50.00%
+#gclk                   5   out of     16   31.25%
+
+Report Hierarchy Area:
++----------------------------------------+
+|Instance |Module   |le    |lut   |seq   |
++----------------------------------------+
+|top      |hd_clean |12116 |11266 |3617  |
++----------------------------------------+
