@@ -1,6 +1,8 @@
 `timescale 1ns/1ps
 // Button debounce + auto slideshow controller for the BMP album
-module album_ui(
+module album_ui #(
+    parameter AUTO_CYCLES=625000000, DEBOUNCE_CYCLES=1000000, HOLD_CYCLES=40000000
+)(
     input  wire clk,
     input  wire rst_n,
     input  wire key_next,   // active low
@@ -15,7 +17,9 @@ module album_ui(
     output wire [9:0] progress,     // 0..610 slideshow progress
     output reg  [4:0] bright,       // 4..20 display brightness
     output reg        bright_mode,  // 1 while adjusting
-    output reg        dim           // 1 while fading out before a load
+    output reg        dim,          // 1 while fading out before a load
+    input wire motion_mode,       // motion advances at a complete clip boundary
+    input wire motion_finished
 );
     reg [25:0] dim_cnt;
     reg a_hold_done;
@@ -38,21 +42,21 @@ module album_ui(
             sync_a <= {sync_a[0], key_auto};
 
             if (sync_n[1] != stable_n) begin
-                if (cnt_n == 20'd999_999) stable_n <= sync_n[1];
+                if (cnt_n == DEBOUNCE_CYCLES-1) stable_n <= sync_n[1];
                 else cnt_n <= cnt_n + 20'd1;
             end else begin
                 cnt_n <= 20'd0;
             end
 
             if (sync_p[1] != stable_p) begin
-                if (cnt_p == 20'd999_999) stable_p <= sync_p[1];
+                if (cnt_p == DEBOUNCE_CYCLES-1) stable_p <= sync_p[1];
                 else cnt_p <= cnt_p + 20'd1;
             end else begin
                 cnt_p <= 20'd0;
             end
 
             if (sync_a[1] != stable_a) begin
-                if (cnt_a == 20'd999_999) stable_a <= sync_a[1];
+                if (cnt_a == DEBOUNCE_CYCLES-1) stable_a <= sync_a[1];
                 else cnt_a <= cnt_a + 20'd1;
             end else begin
                 cnt_a <= 20'd0;
@@ -67,6 +71,7 @@ module album_ui(
     wire press_next = stable_n_d && !stable_n;
     wire press_prev = stable_p_d && !stable_p;
     wire press_auto = stable_a_d && !stable_a;
+    wire toggle_auto = !stable_a_d && stable_a && !a_hold_done;
 
     // ---------------- auto slideshow timer ----------------
     reg [29:0] auto_cnt;
@@ -92,7 +97,7 @@ module album_ui(
             load_req <= 1'b0;
 
             dim<=1'b0;
-            if (!stable_a_d && stable_a && !a_hold_done)
+            if (toggle_auto)
                 auto_en <= ~auto_en;
 
             if (scan_start) begin
@@ -108,8 +113,13 @@ module album_ui(
                 load_req   <= 1'b1;
                 dim_cnt    <= 26'd0;
                 auto_cnt   <= 30'd0;
-            end else if (auto_en && scan_done && !busy && bmp_count > 4'd1 && !dim) begin
-                if (auto_cnt == 30'd624_999_999) begin
+            end else if (auto_en && !toggle_auto && motion_mode && motion_finished && scan_done && !busy && bmp_count > 4'd1 && !dim) begin
+                load_index <= next4[2:0];
+                load_req <= 1'b1;
+                dim_cnt <= 0;
+                auto_cnt <= 0;
+            end else if (auto_en && !toggle_auto && !motion_mode && scan_done && !busy && bmp_count > 4'd1 && !dim) begin
+                if (auto_cnt == AUTO_CYCLES-1) begin
                     load_index <= next4[2:0];
                     load_req   <= 1'b1;
                     dim_cnt    <= 26'd0;
@@ -134,7 +144,7 @@ module album_ui(
         end else begin
             if (!stable_a) begin
                 if (!a_hold_done) begin
-                    if (hold_a == 27'd40_000_000) begin   // 0.8 s
+                    if (hold_a == HOLD_CYCLES) begin   // 0.8 s at defaults
                         a_hold_done <= 1'b1;
                         bright_mode <= ~bright_mode;
                     end else begin

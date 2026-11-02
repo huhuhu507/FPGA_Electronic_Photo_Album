@@ -1,0 +1,28 @@
+standard
+***Report Model: hd_clean***
+
+IO Statistics
+#IO                    18
+  #input                6
+  #output              12
+  #inout                0
+
+Utilization Statistics
+#lut                15151   out of  19600   77.30%
+#reg                 5219   out of  19600   26.63%
+#le                 16214
+  #lut only         10995   out of  16214   67.81%
+  #reg only          1063   out of  16214    6.56%
+  #lut&reg           4156   out of  16214   25.63%
+#dsp                   12   out of     29   41.38%
+#bram                  22   out of     64   34.38%
+  #bram9k              22
+  #fifo9k               0
+#bram32k                0   out of     16    0.00%
+#pad                   22   out of    188   11.70%
+  #ireg                 3
+  #oreg                 4
+  #treg                 0
+#pll                    2   out of      4   50.00%
+#gclk                   5   out of     16   31.25%
+

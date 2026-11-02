@@ -134,14 +134,40 @@ module hd_clean(
     always @(posedge clk_mem or negedge clock_good)begin if(!clock_good)resetmem<=0;else resetmem<={resetmem[1:0],1'b1};end
     always @(posedge clk375 or negedge clock_good)begin if(!clock_good)resetser<=0;else resetser<={resetser[1:0],1'b1};end
     assign rst50_n=reset50[2];assign rst75_n=reset75[2];assign rstm_n=resetmem[2];assign rstser_n=resetser[2];
-    wire sd_ready,rd_req,rd_valid,rd_done;
+    wire sd_ready,rd_req,rd_valid,rd_done;wire [7:0] sd_read_divider;
     wire [31:0] rd_sector;wire [7:0] rd_data;wire [3:0] sd_error;
     sd_ctrl u_sd(.clk(clk50),.rst_n(rst50_n),.sd_clk(sd_clk),.sd_cmd(sd_cmd),.sd_cs_n(sd_cs_n),.sd_dat0(sd_dat0),
-      .sd_ready(sd_ready),.rd_req(rd_req),.rd_sector(rd_sector),.rd_data(rd_data),.rd_valid(rd_valid),.rd_done(rd_done),.error_code(sd_error));
+      .sd_ready(sd_ready),.rd_req(rd_req),.rd_sector(rd_sector),.rd_data(rd_data),.rd_valid(rd_valid),.rd_done(rd_done),.error_code(sd_error),.read_divider(sd_read_divider));
     wire scan_done,busy,load_done,ld_frame_start,img_topdown;
+    reg [22:0] load_subtick;reg [11:0] load_elapsed,load_last;
+    always @(posedge clk50 or negedge rst50_n)begin
+      if(!rst50_n)begin load_subtick<=0;load_elapsed<=0;load_last<=0;end
+      else if(ld_frame_start)begin load_subtick<=0;load_elapsed<=0;end
+      else begin
+        if(busy)begin
+          if(load_subtick==23'd4999999)begin
+            load_subtick<=0;if(load_elapsed!=4095)load_elapsed<=load_elapsed+1'b1;
+          end else load_subtick<=load_subtick+1'b1;
+        end
+        if(load_done)load_last<=load_elapsed;
+      end
+    end
+    reg [7:0] sd_div1,sd_div2;reg [11:0] load_time1,load_time2;
+    always @(posedge clk75 or negedge rst75_n)begin
+      if(!rst75_n)begin sd_div1<=1;sd_div2<=1;load_time1<=0;load_time2<=0;end
+      else begin sd_div1<=sd_read_divider;sd_div2<=sd_div1;load_time1<=load_last;load_time2<=load_time1;end
+    end
     wire [3:0] bmp_count,load_error;wire [11:0] ld_img_w,ld_img_h;
     wire ld_wr_req,ld_wr_ack;wire [20:0] ld_wr_addr;wire [31:0] ld_wr_data;
     wire ui_load_req,auto_en,ui_bmode,ui_dim;
+    wire load_motion,load_compressed;reg display_compressed;wire [15:0] motion_frames,motion_spf;wire [20:0] motion_frame_words,motion_audio_base;
+    wire [31:0] motion_audio_samples;reg display_motion;
+    wire motion_completion_toggle,motion_finished;
+    clip_done_sync u_clip_done(clk50,rst50_n,motion_completion_toggle,motion_finished);
+    wire [20:0] motion_frame_base;wire motion_epoch,motion_playing,motion_pcm_valid;
+    wire signed [15:0] motion_pcm_l,motion_pcm_r;
+    wire [15:0] motion_index,audio_underflows;wire [9:0] motion_progress;
+    wire audio_read_req,audio_read_we,audio_read_done;wire [20:0] audio_read_base;wire [9:0] audio_read_words;wire [31:0] audio_read_data;
     wire [2:0] load_index;wire [9:0] ui_progress;wire [4:0] ui_bright;
     reg disp_bank,display_en,pending;
     reg [11:0] disp_w,disp_h;reg disp_topdown;
@@ -156,18 +182,25 @@ module hd_clean(
       .rd_data(rd_data),.rd_valid(rd_valid),.rd_done(rd_done),.load_req(ui_load_req),.load_index(load_index),
       .wr_req(ld_wr_req),.wr_addr(ld_wr_addr),.wr_data(ld_wr_data),.wr_ack(ld_wr_ack),.fb_offset(ld_fb_offset),
       .scan_done(scan_done),.busy(busy),.load_done(load_done),.img_topdown(img_topdown),.frame_start(ld_frame_start),
-      .img_h(ld_img_h),.img_w(ld_img_w),.bmp_count(bmp_count),.error(load_error));
-    reg done_toggle;
+      .img_h(ld_img_h),.img_w(ld_img_w),.bmp_count(bmp_count),.error(load_error),
+      .motion_mode(load_motion),.motion_frames(motion_frames),.motion_spf(motion_spf),.motion_frame_words(motion_frame_words),
+      .motion_audio_base(motion_audio_base),.motion_audio_samples(motion_audio_samples),.motion_compressed(load_compressed));
+    reg done_toggle,start_toggle;
     always @(posedge clk50 or negedge rst50_n)begin
-      if(!rst50_n)done_toggle<=0;else if(load_done)done_toggle<=~done_toggle;
+      if(!rst50_n)begin done_toggle<=0;start_toggle<=0;end
+      else begin if(load_done)done_toggle<=~done_toggle;if(ld_frame_start)start_toggle<=~start_toggle;end
     end
-    reg [2:0] done_sync;wire commit;reg [4:0] fade_level;reg frame_swapped;
+    reg [2:0] done_sync,start_sync;wire commit;reg [4:0] fade_level;reg frame_swapped;
     // Keep the old image visible during SD loading. Only after a complete
     // new frame arrives, fade down, commit at vblank, then fade up.
     always @(posedge clk75 or negedge rst75_n)begin
-      if(!rst75_n)begin done_sync<=0;pending<=0;disp_bank<=0;display_en<=0;disp_w<=1280;disp_h<=720;disp_topdown<=0;display_index<=0;fade_level<=0;frame_swapped<=0;end
+      if(!rst75_n)begin done_sync<=0;start_sync<=0;display_motion<=0;display_compressed<=0;pending<=0;disp_bank<=0;display_en<=0;disp_w<=1280;disp_h<=720;disp_topdown<=0;display_index<=0;fade_level<=0;frame_swapped<=0;end
       else begin
-        done_sync<={done_sync[1:0],done_toggle};frame_swapped<=0;
+        done_sync<={done_sync[1:0],done_toggle};start_sync<={start_sync[1:0],start_toggle};frame_swapped<=0;
+        // A motion payload uses all SDRAM. Stop reading before it can overwrite an old frame.
+        if(start_sync[2]^start_sync[1])begin
+          if(load_motion||display_motion)begin display_en<=0;display_motion<=0;fade_level<=0;end
+        end
         if(done_sync[2]^done_sync[1])pending<=1;
         if(commit)begin
           if(pending)begin
@@ -175,6 +208,7 @@ module hd_clean(
             else begin
               disp_bank<=~disp_bank;display_en<=1;pending<=0;frame_swapped<=1;
               disp_w<=ld_img_w;disp_h<=ld_img_h;disp_topdown<=img_topdown;display_index<=load_index;
+              display_motion<=load_motion;display_compressed<=load_compressed;if(load_motion)fade_level<=16;
             end
           end else if(display_en && fade_level<16)fade_level<=fade_level+5'd2;
         end
@@ -193,7 +227,7 @@ module hd_clean(
     end
     album_ui u_ui(.clk(clk50),.rst_n(rst50_n),.key_next(key_next||combo_suppress),.key_prev(key_prev||combo_suppress),.key_auto(key_auto),
       .scan_done(scan_done),.busy(busy||commit_pending),.bmp_count(bmp_count),.load_req(ui_load_req),.load_index(load_index),
-      .auto_en(auto_en),.progress(ui_progress),.bright(ui_bright),.bright_mode(ui_bmode),.dim(ui_dim));
+      .auto_en(auto_en),.progress(ui_progress),.bright(ui_bright),.bright_mode(ui_bmode),.dim(ui_dim),.motion_mode(load_motion),.motion_finished(motion_finished));
     // Stable bundled write payload, synchronized request/acknowledge only.
     reg [1:0] req_sync,ack_sync;wire mem_wr_ack;
     always @(posedge clk_mem or negedge rstm_n)begin
@@ -206,6 +240,11 @@ module hd_clean(
     wire [10:0] sd_addr;wire [1:0] sd_ba;wire sd_ras_n,sd_cas_n,sd_we_n;
     wire [31:0] dq,line_data;wire init_done,line_req,line_we,line_done;
     wire [20:0] line_base;wire [9:0] line_words;
+    wire video_req,video_we,video_done;wire [20:0] video_base;wire [9:0] video_words;wire [31:0] video_data;
+    sdram_read_arbiter u_read_arb(clk_mem,rstm_n,
+      video_req,video_base,video_words,video_data,video_we,video_done,
+      audio_read_req,audio_read_base,audio_read_words,audio_read_data,audio_read_we,audio_read_done,
+      line_req,line_base,line_words,line_data,line_we,line_done);
     sdram_ctrl_clean u_sdram_ctrl(.clk(clk_mem),.rst_n(rstm_n),.sd_ras_n(sd_ras_n),.sd_cas_n(sd_cas_n),.sd_we_n(sd_we_n),
       .sd_addr(sd_addr),.sd_ba(sd_ba),.dq(dq),.init_done(init_done),.wr_req(req_sync[1]),.wr_data(ld_wr_data),.wr_addr(ld_wr_addr),
       .wr_reset(1'b0),.wr_ack(mem_wr_ack),.line_req(line_req),.line_base(line_base),.line_words(line_words),
@@ -213,10 +252,11 @@ module hd_clean(
     EG_PHY_SDRAM_2M_32 u_sdram(.clk(clk_sdram),.ras_n(sd_ras_n),.cas_n(sd_cas_n),.we_n(sd_we_n),
       .addr(sd_addr),.ba(sd_ba),.dq(dq),.cs_n(1'b0),.dm0(1'b0),.dm1(1'b0),.dm2(1'b0),.dm3(1'b0),.cke(1'b1));
     wire [10:0] hcnt;wire [9:0] vcnt;wire [15:0] photo_pixel,underflows;
-    video_reader u_video(.pclk(clk75),.mclk(clk_mem),.prst_n(rst75_n),.mrst_n(rstm_n),
-      .valid(display_en),.frame_bank(disp_bank),.img_w(disp_w),.img_h(disp_h),.topdown(disp_topdown),.cover_mode(display_cover),
-      .x(hcnt),.y(vcnt),.pixel(photo_pixel),.vblank_commit(commit),.line_req(line_req),.line_base(line_base),.line_words(line_words),
-      .line_data(line_data),.line_we(line_we),.line_done(line_done),.underflows(underflows));
+    video_reader #(.EXPLICIT_BASE(1)) u_video(.pclk(clk75),.mclk(clk_mem),.prst_n(rst75_n),.mrst_n(rstm_n),
+      .valid(display_en),.frame_bank(display_motion?motion_epoch:disp_bank),.img_w(disp_w),.img_h(disp_h),.topdown(disp_topdown),.cover_mode(display_cover),
+      .x(hcnt),.y(vcnt),.pixel(photo_pixel),.vblank_commit(commit),.line_req(video_req),.line_base(video_base),.line_words(video_words),
+      .line_data(video_data),.line_we(video_we),.line_done(video_done),.underflows(underflows),
+      .frame_base(display_motion?motion_frame_base:(disp_bank?21'd524288:21'd0)),.compressed(display_motion&&display_compressed));
 
     reg [4:0] bright_s1,bright_s2;reg [3:0] state_s1,state_s2;reg [1:0] bmode_sync;
     reg [9:0] prog_s1,prog_s2;
@@ -254,8 +294,20 @@ module hd_clean(
     reg [2:0] test_sync;
     always @(posedge clk75 or negedge rst75_n)begin if(!rst75_n)test_sync<=0;else test_sync<={test_sync[1:0],test_mode};end
     wire test_entry=test_sync[1]&&!test_sync[2];
-    wire pcm_valid,audio_active,buzzer_pwm;wire signed [15:0] pcm_l,pcm_r;
-    audio_synth #(.PIXEL_HZ(74250000)) u_audio(clk75,rst75_n,frame_swapped||test_entry,display_index[1:0],pcm_valid,pcm_l,pcm_r,audio_active,buzzer_pwm);
+    wire pcm_valid,audio_active,buzzer_pwm,cue_pcm_valid,cue_active;wire signed [15:0] pcm_l,pcm_r,cue_pcm_l,cue_pcm_r;
+    audio_synth #(.PIXEL_HZ(74250000)) u_audio(clk75,rst75_n,(frame_swapped&&!display_motion)||test_entry,display_index[1:0],cue_pcm_valid,cue_pcm_l,cue_pcm_r,cue_active,buzzer_pwm);
+    motion_player u_motion(.pclk(clk75),.mclk(clk_mem),.prst_n(rst75_n),.mrst_n(rstm_n),
+      .enable(display_en&&display_motion),.play(state_s2[0]&&!test_sync[2]),.vblank(commit),
+      .frame_count(motion_frames),.samples_per_frame(motion_spf),.frame_words(motion_frame_words),.audio_base(motion_audio_base),.audio_samples(motion_audio_samples),
+      .frame_base(motion_frame_base),.frame_epoch(motion_epoch),.frame_index(motion_index),.progress(motion_progress),
+      .pcm_valid(motion_pcm_valid),.pcm_l(motion_pcm_l),.pcm_r(motion_pcm_r),.playing(motion_playing),.underflows(audio_underflows),
+      .audio_req(audio_read_req),.audio_read_base(audio_read_base),.audio_read_words(audio_read_words),
+      .audio_data(audio_read_data),.audio_we(audio_read_we),.audio_done(audio_read_done),.clip_done_toggle(motion_completion_toggle));
+    wire use_motion_audio=display_en&&display_motion&&!test_sync[2];
+    assign pcm_valid=use_motion_audio?motion_pcm_valid:cue_pcm_valid;
+    assign pcm_l=use_motion_audio?motion_pcm_l:cue_pcm_l;
+    assign pcm_r=use_motion_audio?motion_pcm_r:cue_pcm_r;
+    assign audio_active=use_motion_audio?motion_playing:cue_active;
     assign buzzer=~buzzer_pwm;
     wire [7:0] wave_x;wire [5:0] wave_sample,wave_previous;
     wire frame_tick=(hcnt==0&&vcnt==724);
@@ -265,8 +317,8 @@ module hd_clean(
     wire [3:0] media_error=(sd_error!=0)?sd_error:load_error;
     signage_osd #(.PIXEL_HZ(74250000)) u_osd(.clk(clk75),.rst_n(rst75_n),.x(hcnt),.y(vcnt),.photo(photo_faded),
       .valid(display_en),.sd_ready(state_s2[1]),.scan_done(state_s2[2]),.busy(state_s2[3]),.auto_en(state_s2[0]),.bright_mode(bmode_sync[1]),.test_mode(test_sync[2]),.cover_mode(display_cover),
-      .image_index(display_index),.image_count(bmp_count),.error(media_error),.brightness(bright_s2),.progress(prog_s2),.image_width(disp_w),.image_height(disp_h),
-      .wave_sample(wave_sample),.wave_previous(wave_previous),.audio_active(audio_active),.wave_x(wave_x),.rgb(screen_rgb),.out_x(tx_x),.out_y(tx_y));
+      .image_index(display_index),.image_count(bmp_count),.error(media_error),.brightness(bright_s2),.progress(display_motion?motion_progress:prog_s2),.image_width(disp_w),.image_height(disp_h),
+      .wave_sample(wave_sample),.wave_previous(wave_previous),.audio_active(audio_active),.wave_x(wave_x),.rgb(screen_rgb),.out_x(tx_x),.out_y(tx_y),.motion_mode(display_motion),.read_divider(sd_div2),.load_deciseconds(load_time2));
     wire [23:0] rgb888={screen_rgb[15:11],screen_rgb[15:13],screen_rgb[10:5],screen_rgb[10:9],screen_rgb[4:0],screen_rgb[4:2]};
     wire [9:0] code_r,code_g,code_b;
     hdmi_tx #(.PIXEL_HZ(74250000),.CTS(74250)) u_hdmi(clk75,rst75_n,tx_x,tx_y,rgb888,pcm_valid,pcm_l,pcm_r,code_r,code_g,code_b,audio_overflow);
@@ -274,5 +326,5 @@ module hd_clean(
     reg [25:0] heartbeat;
     always @(posedge clk50 or negedge rst50_n)begin if(!rst50_n)heartbeat<=0;else heartbeat<=heartbeat+1'b1;end
     assign led1=heartbeat[25];assign led2=sd_ready;assign led3=display_en;
-    assign led4=(media_error!=0||audio_overflow||underflows!=0)?heartbeat[23]:busy;
+    assign led4=(media_error!=0||audio_overflow||underflows!=0||audio_underflows!=0)?heartbeat[23]:busy;
 endmodule

@@ -1,7 +1,8 @@
 `timescale 1ns/1ps
 // SD card SPI controller: init + single-sector read
-// SPI init ~200kHz, data read 12.5MHz
-module sd_ctrl(
+// 50 MHz source: init 100 kHz, data up to 25 MHz. CRC16 gates sector
+// delivery; corrupt reads retry at 12.5 then 5 MHz, retaining the slower rate.
+module sd_ctrl #(parameter READ_DIV=1, INIT_DIV=250, POWER_DELAY=33554431)(
     input  wire clk,
     input  wire rst_n,
     output wire sd_clk,
@@ -14,7 +15,7 @@ module sd_ctrl(
     output reg  [7:0]  rd_data,
     output reg         rd_valid,
     output reg         rd_done,
-    output reg  [3:0]  error_code
+    output reg  [3:0]  error_code,output wire [7:0] read_divider
 );
 
     // ---------------- SPI byte engine ----------------
@@ -58,7 +59,8 @@ module sd_ctrl(
         S_TOKEN        = 5'd17,
         S_DATA         = 5'd18,
         S_CRC          = 5'd19,
-        S_ERR          = 5'd20;
+        S_ERR          = 5'd20,
+        S_OUT_WAIT=21,S_OUT_DATA=22,S_OUT_DONE=23,S_RETRY=24,S_RETRY_WAIT=25;
 
     reg [4:0] state, next_state;
     reg [47:0] cmd_buf, cmd_sr;
@@ -74,12 +76,30 @@ module sd_ctrl(
     reg [9:0] data_cnt;
     reg [31:0] sector_lat;
     reg sdhc;
+    reg [7:0] sector_buffer[0:511];reg [7:0] out_q;
+    reg [15:0] crc16;reg [7:0] crc_hi,data_div;
+    reg [1:0] read_retries;reg [3:0] read_failure;
+    assign read_divider=data_div;
+    function [15:0] crc_byte;
+      input [15:0] previous;input [7:0] value;
+      integer n;reg [15:0] c;
+      begin
+        c=previous^{value,8'd0};
+        for(n=0;n<8;n=n+1)c=c[15] ? (c<<1)^16'h1021 : c<<1;
+        crc_byte=c;
+      end
+    endfunction
+    // Both buffers have synchronous writes; output waits one cycle per byte.
+    always @(posedge clk)begin
+      if(state==S_DATA && spi_done)sector_buffer[data_cnt[8:0]]<=spi_rx;
+      out_q<=sector_buffer[data_cnt[8:0]];
+    end
 
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             state <= S_POWER;
             cs_n <= 1'b1;
-            div <= 8'd250;
+            div <= INIT_DIV;data_div<=READ_DIV;crc16<=0;crc_hi<=0;read_retries<=0;read_failure<=0;next_state<=S_CMD0_CHECK;
             spi_start <= 1'b0;
             spi_tx <= 8'hFF;
             cmd_buf <= 48'd0;
@@ -111,7 +131,7 @@ module sd_ctrl(
             case (state)
             S_POWER: begin
                 cs_n <= 1'b1;
-                if (pwr_delay != 25'h1FFFFFF) begin
+                if (pwr_delay != POWER_DELAY) begin
                     pwr_delay <= pwr_delay + 25'd1;
                 end else if (!spi_busy) begin
                     if (power_cnt == 4'd10) begin
@@ -161,8 +181,8 @@ module sd_ctrl(
                         r1 <= spi_rx;
                         state <= next_state;
                     end else if (retry == 8'd63) begin
-                        error_code <= 4'd1;
-                        state <= S_ERR;
+                        if(next_state==S_TOKEN)begin read_failure<=1;state<=S_RETRY;end
+                        else begin error_code <= 4'd1;state <= S_ERR;end
                     end else begin
                         retry <= retry + 8'd1;
                         spi_start <= 1'b1;
@@ -280,13 +300,13 @@ module sd_ctrl(
 
             S_IDLE: begin
                 if (rd_req) begin
-                    sector_lat <= rd_sector;
+                    sector_lat <= rd_sector;read_retries<=0;
                     state <= S_CMD17;
                 end
             end
 
             S_CMD17: begin
-                div <= 8'd5;
+                div <= data_div;cs_n<=0;
                 cmd_buf <= {8'h51, sector_lat, 8'hFF};
                 cmd_sr  <= {sector_lat, 8'hFF, 8'h00};
                 spi_tx  <= 8'h51;
@@ -299,18 +319,18 @@ module sd_ctrl(
             end
 
             S_TOKEN: begin
-                if (first) begin
+                if(r1!=0)begin read_failure<=1;state<=S_RETRY;end
+                else if (first) begin
                     first <= 1'b0;
                     spi_start <= 1'b1;
                     spi_tx <= 8'hFF;
                 end else if (spi_done) begin
                     if (spi_rx == 8'hFE) begin
-                        data_cnt <= 10'd0;
+                        data_cnt <= 10'd0;crc16<=0;
                         first <= 1'b1;
                         state <= S_DATA;
                     end else if (token_retry == 16'hFFFF) begin
-                        error_code <= 4'd6;
-                        state <= S_ERR;
+                        read_failure<=6;state<=S_RETRY;
                     end else begin
                         token_retry <= token_retry + 16'd1;
                         spi_start <= 1'b1;
@@ -325,8 +345,7 @@ module sd_ctrl(
                     spi_start <= 1'b1;
                     spi_tx <= 8'hFF;
                 end else if (spi_done) begin
-                    rd_data <= spi_rx;
-                    rd_valid <= 1'b1;
+                    crc16<=crc_byte(crc16,spi_rx);
                     if (data_cnt == 10'd511) begin
                         crc_cnt <= 2'd0;
                         first <= 1'b1;
@@ -346,16 +365,33 @@ module sd_ctrl(
                     spi_tx <= 8'hFF;
                 end else if (spi_done) begin
                     if (crc_cnt == 2'd1) begin
-                        rd_done <= 1'b1;
-                        state <= S_IDLE;
+                        if({crc_hi,spi_rx}!=crc16)begin read_failure<=10;state<=S_RETRY;end
+                        else begin data_cnt<=0;state<=S_OUT_WAIT;end
                     end else begin
-                        crc_cnt <= crc_cnt + 2'd1;
+                        crc_cnt <= crc_cnt + 2'd1;crc_hi<=spi_rx;
                         spi_start <= 1'b1;
                         spi_tx <= 8'hFF;
                     end
                 end
             end
 
+            S_OUT_WAIT:state<=S_OUT_DATA;
+            S_OUT_DATA:begin
+                rd_data<=out_q;rd_valid<=1;
+                if(data_cnt==511)state<=S_OUT_DONE;
+                else begin data_cnt<=data_cnt+1'b1;state<=S_OUT_WAIT;end
+            end
+            S_OUT_DONE:begin rd_done<=1;state<=S_IDLE;end
+            S_RETRY:begin
+                cs_n<=1;
+                if(read_retries==2)begin error_code<=read_failure;state<=S_ERR;end
+                else begin
+                    read_retries<=read_retries+1'b1;
+                    data_div<=(data_div<2)?8'd2:8'd5;
+                    spi_start<=1;spi_tx<=8'hff;state<=S_RETRY_WAIT;
+                end
+            end
+            S_RETRY_WAIT:if(spi_done)state<=S_CMD17;
             S_ERR: begin
                 cs_n <= 1'b1;
             end
@@ -368,7 +404,7 @@ module sd_ctrl(
 endmodule
 
 
-module spi_byte(
+module spi_byte #(parameter LATE_SAMPLE=1)(
     input  wire clk,
     input  wire rst_n,
     input  wire start,
@@ -420,11 +456,12 @@ module spi_byte(
                     cnt <= 8'd0;
                     if (!sclk) begin
                         sclk <= 1'b1;
-                        rx_sr <= {rx_sr[6:0], miso};
+                        if(!LATE_SAMPLE)rx_sr <= {rx_sr[6:0], miso};
                         if (bit_cnt == 4'd7) st <= FIN;
                         else bit_cnt <= bit_cnt + 4'd1;
                     end else begin
                         sclk <= 1'b0;
+                        if(LATE_SAMPLE)rx_sr<={rx_sr[6:0],miso};
                         tx_sr <= {tx_sr[6:0], 1'b0};
                         mosi <= tx_sr[6];
                     end
@@ -439,7 +476,10 @@ module spi_byte(
                     sclk <= 1'b0;
                     busy <= 1'b0;
                     done <= 1'b1;
-                    rx_data <= rx_sr;
+                    // Sample just before the generated falling edge reaches the card.
+                    // At 25 MHz this allows the full 40 ns bit period for MISO,
+                    // including card/PCB/pad delay, with MOSI/clock unchanged.
+                    rx_data <= LATE_SAMPLE ? {rx_sr[6:0],miso} : rx_sr;
                     st <= IDLE;
                 end else begin
                     cnt <= cnt + 8'd1;

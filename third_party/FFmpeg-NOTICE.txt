@@ -1,0 +1,6 @@
+Bundled standalone FFmpeg 7.1-essentials_build (Gyan.dev), obtained via imageio-ffmpeg 0.7.0.
+PC-side optional converter only; not synthesized into FPGA.
+License/version/build flags: FFmpeg-LICENSE.txt
+Upstream: https://ffmpeg.org/
+Source release: https://ffmpeg.org/releases/ffmpeg-7.1.tar.xz
+Build distribution and dependencies: https://www.gyan.dev/ffmpeg/builds/

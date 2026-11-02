@@ -1,0 +1,272 @@
+{
+  "regions": [
+    {
+      "key": "brand",
+      "x": 80,
+      "y": 24,
+      "w": 64,
+      "h": 32,
+      "conditional": "1'b1"
+    },
+    {
+      "key": "brand_cn",
+      "x": 168,
+      "y": 32,
+      "w": 64,
+      "h": 16,
+      "conditional": "1'b1"
+    },
+    {
+      "key": "tagline",
+      "x": 272,
+      "y": 32,
+      "w": 120,
+      "h": 16,
+      "conditional": "1'b1"
+    },
+    {
+      "key": "up",
+      "x": 944,
+      "y": 32,
+      "w": 48,
+      "h": 16,
+      "conditional": "1'b1"
+    },
+    {
+      "key": "clock",
+      "x": 1008,
+      "y": 32,
+      "w": 64,
+      "h": 16,
+      "conditional": "1'b1"
+    },
+    {
+      "key": "sd_ok",
+      "x": 1120,
+      "y": 32,
+      "w": 40,
+      "h": 16,
+      "conditional": "1'b1"
+    },
+    {
+      "key": "now",
+      "x": 1040,
+      "y": 112,
+      "w": 88,
+      "h": 16,
+      "conditional": "1'b1"
+    },
+    {
+      "key": "index",
+      "x": 1040,
+      "y": 140,
+      "w": 32,
+      "h": 32,
+      "conditional": "1'b1"
+    },
+    {
+      "key": "total",
+      "x": 1096,
+      "y": 152,
+      "w": 32,
+      "h": 16,
+      "conditional": "1'b1"
+    },
+    {
+      "key": "local",
+      "x": 1040,
+      "y": 192,
+      "w": 64,
+      "h": 16,
+      "conditional": "!busy_l"
+    },
+    {
+      "key": "loading_cn",
+      "x": 1040,
+      "y": 192,
+      "w": 48,
+      "h": 16,
+      "conditional": "busy_l"
+    },
+    {
+      "key": "resolution",
+      "x": 1040,
+      "y": 224,
+      "w": 88,
+      "h": 16,
+      "conditional": "1'b1"
+    },
+    {
+      "key": "fit",
+      "x": 1040,
+      "y": 248,
+      "w": 160,
+      "h": 16,
+      "conditional": "1'b1"
+    },
+    {
+      "key": "play",
+      "x": 1040,
+      "y": 296,
+      "w": 64,
+      "h": 16,
+      "conditional": "1'b1"
+    },
+    {
+      "key": "auto_cn",
+      "x": 1040,
+      "y": 320,
+      "w": 64,
+      "h": 16,
+      "conditional": "1'b1"
+    },
+    {
+      "key": "auto",
+      "x": 1120,
+      "y": 324,
+      "w": 32,
+      "h": 16,
+      "conditional": "1'b1"
+    },
+    {
+      "key": "bright",
+      "x": 1040,
+      "y": 384,
+      "w": 80,
+      "h": 16,
+      "conditional": "1'b1"
+    },
+    {
+      "key": "percent",
+      "x": 1040,
+      "y": 408,
+      "w": 64,
+      "h": 32,
+      "conditional": "1'b1"
+    },
+    {
+      "key": "audio",
+      "x": 1040,
+      "y": 480,
+      "w": 88,
+      "h": 16,
+      "conditional": "1'b1"
+    },
+    {
+      "key": "rate",
+      "x": 1040,
+      "y": 576,
+      "w": 120,
+      "h": 16,
+      "conditional": "1'b1"
+    },
+    {
+      "key": "help",
+      "x": 1040,
+      "y": 608,
+      "w": 128,
+      "h": 16,
+      "conditional": "1'b1"
+    },
+    {
+      "key": "info",
+      "x": 48,
+      "y": 664,
+      "w": 32,
+      "h": 16,
+      "conditional": "1'b1"
+    },
+    {
+      "key": "library",
+      "x": 408,
+      "y": 304,
+      "w": 208,
+      "h": 32,
+      "conditional": "!valid_l"
+    },
+    {
+      "key": "insert",
+      "x": 436,
+      "y": 352,
+      "w": 152,
+      "h": 16,
+      "conditional": "!valid_l && !sd_l"
+    },
+    {
+      "key": "scan",
+      "x": 456,
+      "y": 352,
+      "w": 112,
+      "h": 16,
+      "conditional": "!valid_l && sd_l && !scan_l"
+    },
+    {
+      "key": "loading",
+      "x": 460,
+      "y": 352,
+      "w": 104,
+      "h": 16,
+      "conditional": "!valid_l && sd_l && scan_l && busy_l"
+    },
+    {
+      "key": "no_bmp",
+      "x": 448,
+      "y": 352,
+      "w": 128,
+      "h": 16,
+      "conditional": "!valid_l && scan_l && !busy_l && error_l==0"
+    },
+    {
+      "key": "error",
+      "x": 460,
+      "y": 352,
+      "w": 104,
+      "h": 16,
+      "conditional": "!valid_l && error_l!=0"
+    }
+  ],
+  "strings": {
+    "brand": 0,
+    "brand_cn": 4,
+    "tagline": 8,
+    "up": 23,
+    "clock": 29,
+    "sd_ok": 37,
+    "sd_wait": 42,
+    "now": 47,
+    "index": 58,
+    "total": 60,
+    "local": 64,
+    "loading_cn": 68,
+    "resolution": 71,
+    "fit": 422,
+    "play": 101,
+    "auto_cn": 109,
+    "hold_cn": 113,
+    "auto": 117,
+    "hold": 121,
+    "bright": 125,
+    "percent": 135,
+    "audio": 139,
+    "rate": 150,
+    "help": 165,
+    "info": 181,
+    "library": 185,
+    "insert": 198,
+    "scan": 218,
+    "loading": 232,
+    "no_bmp": 245,
+    "error": 261,
+    "ticker": 274,
+    "fill": 402
+  },
+  "latency_registers": 4,
+  "photo_viewport": {
+    "x": 32,
+    "y": 96,
+    "w": 960,
+    "h": 540,
+    "default": "cover",
+    "toggle": "KEY2+KEY3 short release"
+  }
+}

@@ -1,0 +1,1256 @@
+eagle_s20
+13 2315 2763 20707 9871679 0 0
+0.172 0.104 hd_clean eagle_s20 BG256 Detail 31 9
+clock: clk50
+13 7971991 11143 5
+Setup check
+23 3
+Endpoint: _al_u16426|u_loader/reg8_b2_placeOpt_12
+23 4.450000 14945 3
+Timing path: _al_u16262|u_loader/reg41_b1.clk->_al_u16426|u_loader/reg8_b2_placeOpt_12
+_al_u16262|u_loader/reg41_b1.clk
+_al_u16426|u_loader/reg8_b2_placeOpt_12
+25 4.450000 23.336000 18.886000 10 24
+u_loader/width32[1] u_loader/lt14_2|u_loader/lt14_1.b[0]
+u_loader/lt14_c3 u_loader/lt14_4|u_loader/lt14_3.fci
+u_loader/lt14_c5 u_loader/lt14_6|u_loader/lt14_5.fci
+u_loader/lt14_c7 u_loader/lt14_8|u_loader/lt14_7.fci
+u_loader/lt14_c9 u_loader/lt14_10|u_loader/lt14_9.fci
+u_loader/lt14_c11 u_loader/lt14_12|u_loader/lt14_11.fci
+u_loader/lt14_c13 u_loader/lt14_14|u_loader/lt14_13.fci
+u_loader/lt14_c15 u_loader/lt14_16|u_loader/lt14_15.fci
+u_loader/lt14_c17 u_loader/lt14_18|u_loader/lt14_17.fci
+u_loader/lt14_c19 u_loader/lt14_20|u_loader/lt14_19.fci
+u_loader/lt14_c21 u_loader/lt14_22|u_loader/lt14_21.fci
+u_loader/lt14_c23 u_loader/lt14_24|u_loader/lt14_23.fci
+u_loader/lt14_c25 u_loader/lt14_26|u_loader/lt14_25.fci
+u_loader/lt14_c27 u_loader/lt14_28|u_loader/lt14_27.fci
+u_loader/lt14_c29 u_loader/lt14_30|u_loader/lt14_29.fci
+u_loader/lt14_c31 u_loader/lt14_cout|u_loader/lt14_31.fci
+u_loader/n459 _al_u16194|_al_u15671.d[1]
+_al_u16194_o _al_u16196.a[1]
+_al_u16196_o _al_u16215.c[1]
+_al_u16215_o _al_u16289.a[1]
+_al_u16289_o _al_u16304|u_loader/reg58_b0.e[1]
+_al_u16304_o _al_u16361|_al_u14133.b[1]
+_al_u16361_o _al_u16420|_al_u16418.a[0]
+_al_u16418_o _al_u16426|u_loader/reg8_b2_placeOpt_12.a[0]
+
+Timing path: _al_u16262|u_loader/reg41_b1.clk->_al_u16426|u_loader/reg8_b2_placeOpt_12
+_al_u16262|u_loader/reg41_b1.clk
+_al_u16426|u_loader/reg8_b2_placeOpt_12
+97 4.450000 23.336000 18.886000 10 24
+u_loader/width32[1] u_loader/lt14_2|u_loader/lt14_1.b[0]
+u_loader/lt14_c3 u_loader/lt14_4|u_loader/lt14_3.fci
+u_loader/lt14_c5 u_loader/lt14_6|u_loader/lt14_5.fci
+u_loader/lt14_c7 u_loader/lt14_8|u_loader/lt14_7.fci
+u_loader/lt14_c9 u_loader/lt14_10|u_loader/lt14_9.fci
+u_loader/lt14_c11 u_loader/lt14_12|u_loader/lt14_11.fci
+u_loader/lt14_c13 u_loader/lt14_14|u_loader/lt14_13.fci
+u_loader/lt14_c15 u_loader/lt14_16|u_loader/lt14_15.fci
+u_loader/lt14_c17 u_loader/lt14_18|u_loader/lt14_17.fci
+u_loader/lt14_c19 u_loader/lt14_20|u_loader/lt14_19.fci
+u_loader/lt14_c21 u_loader/lt14_22|u_loader/lt14_21.fci
+u_loader/lt14_c23 u_loader/lt14_24|u_loader/lt14_23.fci
+u_loader/lt14_c25 u_loader/lt14_26|u_loader/lt14_25.fci
+u_loader/lt14_c27 u_loader/lt14_28|u_loader/lt14_27.fci
+u_loader/lt14_c29 u_loader/lt14_30|u_loader/lt14_29.fci
+u_loader/lt14_c31 u_loader/lt14_cout|u_loader/lt14_31.fci
+u_loader/n459 _al_u16194|_al_u15671.d[1]
+_al_u16194_o _al_u16196.a[1]
+_al_u16196_o _al_u16215.c[0]
+_al_u16215_o _al_u16289.a[1]
+_al_u16289_o _al_u16304|u_loader/reg58_b0.e[1]
+_al_u16304_o _al_u16361|_al_u14133.b[1]
+_al_u16361_o _al_u16420|_al_u16418.a[0]
+_al_u16418_o _al_u16426|u_loader/reg8_b2_placeOpt_12.a[0]
+
+Timing path: _al_u16262|u_loader/reg41_b1.clk->_al_u16426|u_loader/reg8_b2_placeOpt_12
+_al_u16262|u_loader/reg41_b1.clk
+_al_u16426|u_loader/reg8_b2_placeOpt_12
+169 4.450000 23.336000 18.886000 10 24
+u_loader/width32[1] u_loader/lt14_2|u_loader/lt14_1.b[0]
+u_loader/lt14_c3 u_loader/lt14_4|u_loader/lt14_3.fci
+u_loader/lt14_c5 u_loader/lt14_6|u_loader/lt14_5.fci
+u_loader/lt14_c7 u_loader/lt14_8|u_loader/lt14_7.fci
+u_loader/lt14_c9 u_loader/lt14_10|u_loader/lt14_9.fci
+u_loader/lt14_c11 u_loader/lt14_12|u_loader/lt14_11.fci
+u_loader/lt14_c13 u_loader/lt14_14|u_loader/lt14_13.fci
+u_loader/lt14_c15 u_loader/lt14_16|u_loader/lt14_15.fci
+u_loader/lt14_c17 u_loader/lt14_18|u_loader/lt14_17.fci
+u_loader/lt14_c19 u_loader/lt14_20|u_loader/lt14_19.fci
+u_loader/lt14_c21 u_loader/lt14_22|u_loader/lt14_21.fci
+u_loader/lt14_c23 u_loader/lt14_24|u_loader/lt14_23.fci
+u_loader/lt14_c25 u_loader/lt14_26|u_loader/lt14_25.fci
+u_loader/lt14_c27 u_loader/lt14_28|u_loader/lt14_27.fci
+u_loader/lt14_c29 u_loader/lt14_30|u_loader/lt14_29.fci
+u_loader/lt14_c31 u_loader/lt14_cout|u_loader/lt14_31.fci
+u_loader/n459 _al_u16194|_al_u15671.d[1]
+_al_u16194_o _al_u16196.a[1]
+_al_u16196_o _al_u16215.c[1]
+_al_u16215_o _al_u16289.a[0]
+_al_u16289_o _al_u16304|u_loader/reg58_b0.e[1]
+_al_u16304_o _al_u16361|_al_u14133.b[1]
+_al_u16361_o _al_u16420|_al_u16418.a[0]
+_al_u16418_o _al_u16426|u_loader/reg8_b2_placeOpt_12.a[0]
+
+
+Endpoint: _al_u16416|u_loader/reg8_b3
+241 4.468000 26558 3
+Timing path: _al_u16262|u_loader/reg41_b1.clk->_al_u16416|u_loader/reg8_b3
+_al_u16262|u_loader/reg41_b1.clk
+_al_u16416|u_loader/reg8_b3
+243 4.468000 23.336000 18.868000 10 24
+u_loader/width32[1] u_loader/lt14_2|u_loader/lt14_1.b[0]
+u_loader/lt14_c3 u_loader/lt14_4|u_loader/lt14_3.fci
+u_loader/lt14_c5 u_loader/lt14_6|u_loader/lt14_5.fci
+u_loader/lt14_c7 u_loader/lt14_8|u_loader/lt14_7.fci
+u_loader/lt14_c9 u_loader/lt14_10|u_loader/lt14_9.fci
+u_loader/lt14_c11 u_loader/lt14_12|u_loader/lt14_11.fci
+u_loader/lt14_c13 u_loader/lt14_14|u_loader/lt14_13.fci
+u_loader/lt14_c15 u_loader/lt14_16|u_loader/lt14_15.fci
+u_loader/lt14_c17 u_loader/lt14_18|u_loader/lt14_17.fci
+u_loader/lt14_c19 u_loader/lt14_20|u_loader/lt14_19.fci
+u_loader/lt14_c21 u_loader/lt14_22|u_loader/lt14_21.fci
+u_loader/lt14_c23 u_loader/lt14_24|u_loader/lt14_23.fci
+u_loader/lt14_c25 u_loader/lt14_26|u_loader/lt14_25.fci
+u_loader/lt14_c27 u_loader/lt14_28|u_loader/lt14_27.fci
+u_loader/lt14_c29 u_loader/lt14_30|u_loader/lt14_29.fci
+u_loader/lt14_c31 u_loader/lt14_cout|u_loader/lt14_31.fci
+u_loader/n459 _al_u16194|_al_u15671.d[1]
+_al_u16194_o _al_u16196.a[1]
+_al_u16196_o _al_u16215.c[1]
+_al_u16215_o _al_u16289.a[1]
+_al_u16289_o _al_u16304|u_loader/reg58_b0.e[1]
+_al_u16304_o _al_u16361|_al_u14133.b[1]
+_al_u16361_o _al_u16409.a[1]
+_al_u16409_o _al_u16416|u_loader/reg8_b3.a[0]
+
+Timing path: _al_u16262|u_loader/reg41_b1.clk->_al_u16416|u_loader/reg8_b3
+_al_u16262|u_loader/reg41_b1.clk
+_al_u16416|u_loader/reg8_b3
+315 4.468000 23.336000 18.868000 10 24
+u_loader/width32[1] u_loader/lt14_2|u_loader/lt14_1.b[0]
+u_loader/lt14_c3 u_loader/lt14_4|u_loader/lt14_3.fci
+u_loader/lt14_c5 u_loader/lt14_6|u_loader/lt14_5.fci
+u_loader/lt14_c7 u_loader/lt14_8|u_loader/lt14_7.fci
+u_loader/lt14_c9 u_loader/lt14_10|u_loader/lt14_9.fci
+u_loader/lt14_c11 u_loader/lt14_12|u_loader/lt14_11.fci
+u_loader/lt14_c13 u_loader/lt14_14|u_loader/lt14_13.fci
+u_loader/lt14_c15 u_loader/lt14_16|u_loader/lt14_15.fci
+u_loader/lt14_c17 u_loader/lt14_18|u_loader/lt14_17.fci
+u_loader/lt14_c19 u_loader/lt14_20|u_loader/lt14_19.fci
+u_loader/lt14_c21 u_loader/lt14_22|u_loader/lt14_21.fci
+u_loader/lt14_c23 u_loader/lt14_24|u_loader/lt14_23.fci
+u_loader/lt14_c25 u_loader/lt14_26|u_loader/lt14_25.fci
+u_loader/lt14_c27 u_loader/lt14_28|u_loader/lt14_27.fci
+u_loader/lt14_c29 u_loader/lt14_30|u_loader/lt14_29.fci
+u_loader/lt14_c31 u_loader/lt14_cout|u_loader/lt14_31.fci
+u_loader/n459 _al_u16194|_al_u15671.d[1]
+_al_u16194_o _al_u16196.a[1]
+_al_u16196_o _al_u16215.c[1]
+_al_u16215_o _al_u16289.a[0]
+_al_u16289_o _al_u16304|u_loader/reg58_b0.e[1]
+_al_u16304_o _al_u16361|_al_u14133.b[1]
+_al_u16361_o _al_u16409.a[1]
+_al_u16409_o _al_u16416|u_loader/reg8_b3.a[0]
+
+Timing path: _al_u16262|u_loader/reg41_b1.clk->_al_u16416|u_loader/reg8_b3
+_al_u16262|u_loader/reg41_b1.clk
+_al_u16416|u_loader/reg8_b3
+387 4.468000 23.336000 18.868000 10 24
+u_loader/width32[1] u_loader/lt14_2|u_loader/lt14_1.b[0]
+u_loader/lt14_c3 u_loader/lt14_4|u_loader/lt14_3.fci
+u_loader/lt14_c5 u_loader/lt14_6|u_loader/lt14_5.fci
+u_loader/lt14_c7 u_loader/lt14_8|u_loader/lt14_7.fci
+u_loader/lt14_c9 u_loader/lt14_10|u_loader/lt14_9.fci
+u_loader/lt14_c11 u_loader/lt14_12|u_loader/lt14_11.fci
+u_loader/lt14_c13 u_loader/lt14_14|u_loader/lt14_13.fci
+u_loader/lt14_c15 u_loader/lt14_16|u_loader/lt14_15.fci
+u_loader/lt14_c17 u_loader/lt14_18|u_loader/lt14_17.fci
+u_loader/lt14_c19 u_loader/lt14_20|u_loader/lt14_19.fci
+u_loader/lt14_c21 u_loader/lt14_22|u_loader/lt14_21.fci
+u_loader/lt14_c23 u_loader/lt14_24|u_loader/lt14_23.fci
+u_loader/lt14_c25 u_loader/lt14_26|u_loader/lt14_25.fci
+u_loader/lt14_c27 u_loader/lt14_28|u_loader/lt14_27.fci
+u_loader/lt14_c29 u_loader/lt14_30|u_loader/lt14_29.fci
+u_loader/lt14_c31 u_loader/lt14_cout|u_loader/lt14_31.fci
+u_loader/n459 _al_u16194|_al_u15671.d[1]
+_al_u16194_o _al_u16196.a[1]
+_al_u16196_o _al_u16215.c[1]
+_al_u16215_o _al_u16289.a[1]
+_al_u16289_o _al_u16304|u_loader/reg58_b0.e[1]
+_al_u16304_o _al_u16361|_al_u14133.b[1]
+_al_u16361_o _al_u16409.a[0]
+_al_u16409_o _al_u16416|u_loader/reg8_b3.a[0]
+
+
+Endpoint: _al_u16416|u_loader/reg8_b3_placeOpt_11
+459 4.637000 26558 3
+Timing path: _al_u16262|u_loader/reg41_b1.clk->_al_u16416|u_loader/reg8_b3_placeOpt_11
+_al_u16262|u_loader/reg41_b1.clk
+_al_u16416|u_loader/reg8_b3_placeOpt_11
+461 4.637000 23.336000 18.699000 10 24
+u_loader/width32[1] u_loader/lt14_2|u_loader/lt14_1.b[0]
+u_loader/lt14_c3 u_loader/lt14_4|u_loader/lt14_3.fci
+u_loader/lt14_c5 u_loader/lt14_6|u_loader/lt14_5.fci
+u_loader/lt14_c7 u_loader/lt14_8|u_loader/lt14_7.fci
+u_loader/lt14_c9 u_loader/lt14_10|u_loader/lt14_9.fci
+u_loader/lt14_c11 u_loader/lt14_12|u_loader/lt14_11.fci
+u_loader/lt14_c13 u_loader/lt14_14|u_loader/lt14_13.fci
+u_loader/lt14_c15 u_loader/lt14_16|u_loader/lt14_15.fci
+u_loader/lt14_c17 u_loader/lt14_18|u_loader/lt14_17.fci
+u_loader/lt14_c19 u_loader/lt14_20|u_loader/lt14_19.fci
+u_loader/lt14_c21 u_loader/lt14_22|u_loader/lt14_21.fci
+u_loader/lt14_c23 u_loader/lt14_24|u_loader/lt14_23.fci
+u_loader/lt14_c25 u_loader/lt14_26|u_loader/lt14_25.fci
+u_loader/lt14_c27 u_loader/lt14_28|u_loader/lt14_27.fci
+u_loader/lt14_c29 u_loader/lt14_30|u_loader/lt14_29.fci
+u_loader/lt14_c31 u_loader/lt14_cout|u_loader/lt14_31.fci
+u_loader/n459 _al_u16194|_al_u15671.d[1]
+_al_u16194_o _al_u16196.a[1]
+_al_u16196_o _al_u16215.c[1]
+_al_u16215_o _al_u16289.a[1]
+_al_u16289_o _al_u16304|u_loader/reg58_b0.e[1]
+_al_u16304_o _al_u16361|_al_u14133.b[1]
+_al_u16361_o _al_u16409.a[1]
+_al_u16409_o _al_u16416|u_loader/reg8_b3_placeOpt_11.d[0]
+
+Timing path: _al_u16262|u_loader/reg41_b1.clk->_al_u16416|u_loader/reg8_b3_placeOpt_11
+_al_u16262|u_loader/reg41_b1.clk
+_al_u16416|u_loader/reg8_b3_placeOpt_11
+533 4.637000 23.336000 18.699000 10 24
+u_loader/width32[1] u_loader/lt14_2|u_loader/lt14_1.b[0]
+u_loader/lt14_c3 u_loader/lt14_4|u_loader/lt14_3.fci
+u_loader/lt14_c5 u_loader/lt14_6|u_loader/lt14_5.fci
+u_loader/lt14_c7 u_loader/lt14_8|u_loader/lt14_7.fci
+u_loader/lt14_c9 u_loader/lt14_10|u_loader/lt14_9.fci
+u_loader/lt14_c11 u_loader/lt14_12|u_loader/lt14_11.fci
+u_loader/lt14_c13 u_loader/lt14_14|u_loader/lt14_13.fci
+u_loader/lt14_c15 u_loader/lt14_16|u_loader/lt14_15.fci
+u_loader/lt14_c17 u_loader/lt14_18|u_loader/lt14_17.fci
+u_loader/lt14_c19 u_loader/lt14_20|u_loader/lt14_19.fci
+u_loader/lt14_c21 u_loader/lt14_22|u_loader/lt14_21.fci
+u_loader/lt14_c23 u_loader/lt14_24|u_loader/lt14_23.fci
+u_loader/lt14_c25 u_loader/lt14_26|u_loader/lt14_25.fci
+u_loader/lt14_c27 u_loader/lt14_28|u_loader/lt14_27.fci
+u_loader/lt14_c29 u_loader/lt14_30|u_loader/lt14_29.fci
+u_loader/lt14_c31 u_loader/lt14_cout|u_loader/lt14_31.fci
+u_loader/n459 _al_u16194|_al_u15671.d[1]
+_al_u16194_o _al_u16196.a[1]
+_al_u16196_o _al_u16215.c[1]
+_al_u16215_o _al_u16289.a[0]
+_al_u16289_o _al_u16304|u_loader/reg58_b0.e[1]
+_al_u16304_o _al_u16361|_al_u14133.b[1]
+_al_u16361_o _al_u16409.a[1]
+_al_u16409_o _al_u16416|u_loader/reg8_b3_placeOpt_11.d[0]
+
+Timing path: _al_u16262|u_loader/reg41_b1.clk->_al_u16416|u_loader/reg8_b3_placeOpt_11
+_al_u16262|u_loader/reg41_b1.clk
+_al_u16416|u_loader/reg8_b3_placeOpt_11
+605 4.637000 23.336000 18.699000 10 24
+u_loader/width32[1] u_loader/lt14_2|u_loader/lt14_1.b[0]
+u_loader/lt14_c3 u_loader/lt14_4|u_loader/lt14_3.fci
+u_loader/lt14_c5 u_loader/lt14_6|u_loader/lt14_5.fci
+u_loader/lt14_c7 u_loader/lt14_8|u_loader/lt14_7.fci
+u_loader/lt14_c9 u_loader/lt14_10|u_loader/lt14_9.fci
+u_loader/lt14_c11 u_loader/lt14_12|u_loader/lt14_11.fci
+u_loader/lt14_c13 u_loader/lt14_14|u_loader/lt14_13.fci
+u_loader/lt14_c15 u_loader/lt14_16|u_loader/lt14_15.fci
+u_loader/lt14_c17 u_loader/lt14_18|u_loader/lt14_17.fci
+u_loader/lt14_c19 u_loader/lt14_20|u_loader/lt14_19.fci
+u_loader/lt14_c21 u_loader/lt14_22|u_loader/lt14_21.fci
+u_loader/lt14_c23 u_loader/lt14_24|u_loader/lt14_23.fci
+u_loader/lt14_c25 u_loader/lt14_26|u_loader/lt14_25.fci
+u_loader/lt14_c27 u_loader/lt14_28|u_loader/lt14_27.fci
+u_loader/lt14_c29 u_loader/lt14_30|u_loader/lt14_29.fci
+u_loader/lt14_c31 u_loader/lt14_cout|u_loader/lt14_31.fci
+u_loader/n459 _al_u16194|_al_u15671.d[1]
+_al_u16194_o _al_u16196.a[1]
+_al_u16196_o _al_u16215.c[1]
+_al_u16215_o _al_u16289.a[1]
+_al_u16289_o _al_u16304|u_loader/reg58_b0.e[1]
+_al_u16304_o _al_u16361|_al_u14133.b[1]
+_al_u16361_o _al_u16409.a[0]
+_al_u16409_o _al_u16416|u_loader/reg8_b3_placeOpt_11.d[0]
+
+
+
+Hold check
+677 3
+Endpoint: u_sd/ram_sector_buffer0_512x8_sub_000000_000
+679 0.238000 23 3
+Timing path: _al_u14206|u_sd/reg20_b7.clk->u_sd/ram_sector_buffer0_512x8_sub_000000_000
+_al_u14206|u_sd/reg20_b7.clk
+u_sd/ram_sector_buffer0_512x8_sub_000000_000
+681 0.238000 3.576000 3.814000 1 1
+u_sd/data_cnt[7] u_sd/ram_sector_buffer0_512x8_sub_000000_000.addra[10]
+
+Timing path: _al_u14273|u_sd/reg20_b4.clk->u_sd/ram_sector_buffer0_512x8_sub_000000_000
+_al_u14273|u_sd/reg20_b4.clk
+u_sd/ram_sector_buffer0_512x8_sub_000000_000
+707 0.303000 3.576000 3.879000 1 1
+u_sd/data_cnt[4] u_sd/ram_sector_buffer0_512x8_sub_000000_000.addra[7]
+
+Timing path: _al_u14271|u_sd/reg20_b5.clk->u_sd/ram_sector_buffer0_512x8_sub_000000_000
+_al_u14271|u_sd/reg20_b5.clk
+u_sd/ram_sector_buffer0_512x8_sub_000000_000
+733 0.303000 3.576000 3.879000 1 1
+u_sd/data_cnt[5] u_sd/ram_sector_buffer0_512x8_sub_000000_000.addra[8]
+
+
+Endpoint: u_loader/reg1_b17|u_loader/reg1_b2
+759 0.296000 1 1
+Timing path: _al_u16022|u_loader/reg11_b17.clk->u_loader/reg1_b17|u_loader/reg1_b2
+_al_u16022|u_loader/reg11_b17.clk
+u_loader/reg1_b17|u_loader/reg1_b2
+761 0.296000 3.531000 3.827000 1 1
+u_loader/io_sector[17] u_loader/reg1_b17|u_loader/reg1_b2.mi[1]
+
+
+Endpoint: u_sd/reg21_b14|u_sd/reg21_b5
+787 0.347000 1 1
+Timing path: _al_u16039|u_loader/reg1_b14.clk->u_sd/reg21_b14|u_sd/reg21_b5
+_al_u16039|u_loader/reg1_b14.clk
+u_sd/reg21_b14|u_sd/reg21_b5
+789 0.347000 3.450000 3.797000 1 1
+rd_sector[14] u_sd/reg21_b14|u_sd/reg21_b5.mi[1]
+
+
+
+Recovery check
+815 3
+Endpoint: _al_u13136|u_loader/frame_start_reg_placeOpt_1
+817 16.493000 1 1
+Timing path: reg33_b1|reg33_b2_placeOpt_33.clk->_al_u13136|u_loader/frame_start_reg_placeOpt_1
+reg33_b1|reg33_b2_placeOpt_33.clk
+_al_u13136|u_loader/frame_start_reg_placeOpt_1
+819 16.493000 23.071000 6.578000 1 1
+reset50[2]_placeOpt_33 _al_u13136|u_loader/frame_start_reg_placeOpt_1.sr
+
+
+Endpoint: _al_u16325|u_loader/reg84_b0_placeOpt_1
+845 16.799000 1 1
+Timing path: reg33_b1|reg33_b2_placeOpt_19.clk->_al_u16325|u_loader/reg84_b0_placeOpt_1
+reg33_b1|reg33_b2_placeOpt_19.clk
+_al_u16325|u_loader/reg84_b0_placeOpt_1
+847 16.799000 23.071000 6.272000 1 1
+reset50[2]_placeOpt_19 _al_u16325|u_loader/reg84_b0_placeOpt_1.sr
+
+
+Endpoint: _al_u10459|u_loader/reg28_b23
+873 16.956000 1 1
+Timing path: reg33_b1|reg33_b2_placeOpt_41.clk->_al_u10459|u_loader/reg28_b23
+reg33_b1|reg33_b2_placeOpt_41.clk
+_al_u10459|u_loader/reg28_b23
+875 16.956000 23.071000 6.115000 1 1
+reset50[2]_placeOpt_41 _al_u10459|u_loader/reg28_b23.sr
+
+
+
+Removal check
+901 3
+Endpoint: u_loader/reg3_b2|u_loader/reg78_b2
+903 0.156000 1 1
+Timing path: reg33_b1|reg33_b2_placeOpt_14.clk->u_loader/reg3_b2|u_loader/reg78_b2
+reg33_b1|reg33_b2_placeOpt_14.clk
+u_loader/reg3_b2|u_loader/reg78_b2
+905 0.156000 3.676000 3.832000 1 1
+reset50[2]_placeOpt_14 u_loader/reg3_b2|u_loader/reg78_b2.sr
+
+
+Endpoint: u_loader/reg3_b16|u_loader/reg78_b16
+931 0.156000 1 1
+Timing path: reg33_b1|reg33_b2_placeOpt_14.clk->u_loader/reg3_b16|u_loader/reg78_b16
+reg33_b1|reg33_b2_placeOpt_14.clk
+u_loader/reg3_b16|u_loader/reg78_b16
+933 0.156000 3.676000 3.832000 1 1
+reset50[2]_placeOpt_14 u_loader/reg3_b16|u_loader/reg78_b16.sr
+
+
+Endpoint: _al_u14585|u_loader/reg50_b7
+959 0.189000 1 1
+Timing path: reg33_b1|reg33_b2_placeOpt_14.clk->_al_u14585|u_loader/reg50_b7
+reg33_b1|reg33_b2_placeOpt_14.clk
+_al_u14585|u_loader/reg50_b7
+961 0.189000 3.676000 3.865000 1 1
+reset50[2]_placeOpt_14 _al_u14585|u_loader/reg50_b7.sr
+
+
+
+Period check
+987 3
+Endpoint: u_loader/mult1_.clk
+991 16.586000 1 0
+
+Endpoint: u_loader/mult2_.clk
+992 16.586000 1 0
+
+Endpoint: u_loader/mult3_.clk
+993 16.586000 1 0
+
+
+
+clock: u_pll.refclk
+994 0 0 0
+
+clock: u_pll.clkc[0]
+1005 311 157 4
+Setup check
+1015 3
+Endpoint: u_serializer/reg4_b0|u_serializer/reg4_b1
+1015 0.723000 2 2
+Timing path: _al_u13275|u_serializer/load_event_reg.clk->u_serializer/reg4_b0|u_serializer/reg4_b1
+_al_u13275|u_serializer/load_event_reg.clk
+u_serializer/reg4_b0|u_serializer/reg4_b1
+1017 0.723000 4.583000 3.860000 1 1
+u_serializer/load_event u_serializer/reg4_b0|u_serializer/reg4_b1.a[1]
+
+Timing path: u_serializer/reg4_b0|u_serializer/reg4_b1.clk->u_serializer/reg4_b0|u_serializer/reg4_b1
+u_serializer/reg4_b0|u_serializer/reg4_b1.clk
+u_serializer/reg4_b0|u_serializer/reg4_b1
+1043 1.944000 4.583000 2.639000 1 1
+u_serializer/sh_clk[1] u_serializer/reg4_b0|u_serializer/reg4_b1.d[1]
+
+
+Endpoint: u_serializer/reg4_b0|u_serializer/reg4_b1
+1069 0.723000 2 2
+Timing path: _al_u13275|u_serializer/load_event_reg.clk->u_serializer/reg4_b0|u_serializer/reg4_b1
+_al_u13275|u_serializer/load_event_reg.clk
+u_serializer/reg4_b0|u_serializer/reg4_b1
+1071 0.723000 4.583000 3.860000 1 1
+u_serializer/load_event u_serializer/reg4_b0|u_serializer/reg4_b1.a[0]
+
+Timing path: u_serializer/reg4_b3|u_serializer/reg3_b6.clk->u_serializer/reg4_b0|u_serializer/reg4_b1
+u_serializer/reg4_b3|u_serializer/reg3_b6.clk
+u_serializer/reg4_b0|u_serializer/reg4_b1
+1097 1.223000 4.583000 3.360000 1 1
+u_serializer/sh_clk[3] u_serializer/reg4_b0|u_serializer/reg4_b1.b[0]
+
+
+Endpoint: u_serializer/reg3_b0|u_serializer/reg3_b2
+1123 0.747000 2 2
+Timing path: _al_u13275|u_serializer/load_event_reg.clk->u_serializer/reg3_b0|u_serializer/reg3_b2
+_al_u13275|u_serializer/load_event_reg.clk
+u_serializer/reg3_b0|u_serializer/reg3_b2
+1125 0.747000 4.583000 3.836000 1 1
+u_serializer/load_event u_serializer/reg3_b0|u_serializer/reg3_b2.b[1]
+
+Timing path: u_serializer/reg3_b0|u_serializer/reg3_b2.clk->u_serializer/reg3_b0|u_serializer/reg3_b2
+u_serializer/reg3_b0|u_serializer/reg3_b2.clk
+u_serializer/reg3_b0|u_serializer/reg3_b2
+1151 1.887000 4.583000 2.696000 1 1
+u_serializer/sh_b[2] u_serializer/reg3_b0|u_serializer/reg3_b2.d[1]
+
+
+
+Hold check
+1177 3
+Endpoint: reg2_b2|_al_u11772
+1179 0.410000 1 1
+Timing path: reg2_b1|reg2_b0.clk->reg2_b2|_al_u11772
+reg2_b1|reg2_b0.clk
+reg2_b2|_al_u11772
+1181 0.410000 2.036000 2.446000 1 1
+resetser[1] reg2_b2|_al_u11772.mi[1]
+
+
+Endpoint: u_serializer/reg4_b0|u_serializer/reg4_b1
+1207 0.507000 2 2
+Timing path: u_serializer/reg4_b0|u_serializer/reg4_b1.clk->u_serializer/reg4_b0|u_serializer/reg4_b1
+u_serializer/reg4_b0|u_serializer/reg4_b1.clk
+u_serializer/reg4_b0|u_serializer/reg4_b1
+1209 0.507000 1.908000 2.415000 1 1
+u_serializer/sh_clk[1] u_serializer/reg4_b0|u_serializer/reg4_b1.d[1]
+
+Timing path: _al_u13275|u_serializer/load_event_reg.clk->u_serializer/reg4_b0|u_serializer/reg4_b1
+_al_u13275|u_serializer/load_event_reg.clk
+u_serializer/reg4_b0|u_serializer/reg4_b1
+1235 1.323000 1.908000 3.231000 1 1
+u_serializer/load_event u_serializer/reg4_b0|u_serializer/reg4_b1.a[1]
+
+
+Endpoint: u_serializer/reg4_b3|u_serializer/reg3_b6
+1261 0.557000 1 1
+Timing path: _al_u13275|u_serializer/load_event_reg.clk->u_serializer/reg4_b3|u_serializer/reg3_b6
+_al_u13275|u_serializer/load_event_reg.clk
+u_serializer/reg4_b3|u_serializer/reg3_b6
+1263 0.557000 2.036000 2.593000 1 1
+u_serializer/load_event u_serializer/reg4_b3|u_serializer/reg3_b6.mi[1]
+
+
+
+Recovery check
+1289 3
+Endpoint: u_serializer/reg2_b3|u_serializer/reg2_b5
+1291 0.243000 1 1
+Timing path: reg2_b2|_al_u11772.clk->u_serializer/reg2_b3|u_serializer/reg2_b5
+reg2_b2|_al_u11772.clk
+u_serializer/reg2_b3|u_serializer/reg2_b5
+1293 0.243000 4.399000 4.156000 1 1
+resetser[2] u_serializer/reg2_b3|u_serializer/reg2_b5.sr
+
+
+Endpoint: u_serializer/reg4_b0|u_serializer/reg4_b1
+1319 0.305000 1 1
+Timing path: reg2_b2|_al_u11772.clk->u_serializer/reg4_b0|u_serializer/reg4_b1
+reg2_b2|_al_u11772.clk
+u_serializer/reg4_b0|u_serializer/reg4_b1
+1321 0.305000 4.399000 4.094000 1 1
+resetser[2] u_serializer/reg4_b0|u_serializer/reg4_b1.sr
+
+
+Endpoint: u_serializer/reg4_b3|u_serializer/reg3_b6
+1347 0.336000 1 1
+Timing path: reg2_b2|_al_u11772.clk->u_serializer/reg4_b3|u_serializer/reg3_b6
+reg2_b2|_al_u11772.clk
+u_serializer/reg4_b3|u_serializer/reg3_b6
+1349 0.336000 4.399000 4.063000 1 1
+resetser[2] u_serializer/reg4_b3|u_serializer/reg3_b6.sr
+
+
+
+Removal check
+1375 3
+Endpoint: u_serializer/reg1_b4|u_serializer/reg1_b6
+1377 1.051000 1 1
+Timing path: reg2_b2|_al_u11772.clk->u_serializer/reg1_b4|u_serializer/reg1_b6
+reg2_b2|_al_u11772.clk
+u_serializer/reg1_b4|u_serializer/reg1_b6
+1379 1.051000 2.262000 3.313000 1 1
+resetser[2] u_serializer/reg1_b4|u_serializer/reg1_b6.sr
+
+
+Endpoint: u_serializer/reg1_b0|u_serializer/reg1_b1
+1405 1.051000 1 1
+Timing path: reg2_b2|_al_u11772.clk->u_serializer/reg1_b0|u_serializer/reg1_b1
+reg2_b2|_al_u11772.clk
+u_serializer/reg1_b0|u_serializer/reg1_b1
+1407 1.051000 2.262000 3.313000 1 1
+resetser[2] u_serializer/reg1_b0|u_serializer/reg1_b1.sr
+
+
+Endpoint: u_serializer/reg1_b8|u_serializer/reg3_b9
+1433 1.100000 1 1
+Timing path: reg2_b2|_al_u11772.clk->u_serializer/reg1_b8|u_serializer/reg3_b9
+reg2_b2|_al_u11772.clk
+u_serializer/reg1_b8|u_serializer/reg3_b9
+1435 1.100000 2.262000 3.362000 1 1
+resetser[2] u_serializer/reg1_b8|u_serializer/reg3_b9.sr
+
+
+
+
+clock: u_pll.clkc[1]
+1461 161132 1914 4
+Setup check
+1471 3
+Endpoint: u_motion/reg1_b4|u_motion/reg1_b5
+1471 1.698000 649 3
+Timing path: u_motion/fifo/reg2_b8|_al_u11243.clk->u_motion/reg1_b4|u_motion/reg1_b5
+u_motion/fifo/reg2_b8|_al_u11243.clk
+u_motion/reg1_b4|u_motion/reg1_b5
+1473 1.698000 12.664000 10.966000 9 9
+u_motion/fifo/rg2[8] u_motion/fifo/reg2_b10|u_motion/fifo/reg1_b10.c[1]
+u_motion/fifo/n2 _al_u10518|_al_u12595.d[1]
+u_motion/fifo/n6 _al_u9882|_al_u11156.d[0]
+u_motion/fifo/n7 u_motion/fifo/sub0/u3_al_u17103.d[0]
+u_motion/fifo/sub0/c7 u_motion/fifo/sub0/u7_al_u17104.fci
+u_motion/fifo_level[9] u_motion/lt0_10|u_motion/lt0_9.a[0]
+u_motion/lt0_c11 u_motion/lt0_cout_al_u17389.fci
+u_motion/n7 _al_u9845|u_motion/reg0_b0.b[0]
+u_motion/mux13_b0_sel_is_2_o u_motion/reg1_b4|u_motion/reg1_b5.ce
+
+Timing path: u_motion/fifo/reg1_b5|u_motion/fifo/reg2_b5.clk->u_motion/reg1_b4|u_motion/reg1_b5
+u_motion/fifo/reg1_b5|u_motion/fifo/reg2_b5.clk
+u_motion/reg1_b4|u_motion/reg1_b5
+1515 1.813000 12.664000 10.851000 9 9
+u_motion/fifo/rg2[5] _al_u10517|_al_u11571.b[1]
+_al_u10517_o _al_u10518|_al_u12595.c[1]
+u_motion/fifo/n6 _al_u9882|_al_u11156.d[0]
+u_motion/fifo/n7 u_motion/fifo/sub0/u3_al_u17103.d[0]
+u_motion/fifo/sub0/c7 u_motion/fifo/sub0/u7_al_u17104.fci
+u_motion/fifo_level[9] u_motion/lt0_10|u_motion/lt0_9.a[0]
+u_motion/lt0_c11 u_motion/lt0_cout_al_u17389.fci
+u_motion/n7 _al_u9845|u_motion/reg0_b0.b[0]
+u_motion/mux13_b0_sel_is_2_o u_motion/reg1_b4|u_motion/reg1_b5.ce
+
+Timing path: u_motion/fifo/reg2_b8|_al_u11243.clk->u_motion/reg1_b4|u_motion/reg1_b5
+u_motion/fifo/reg2_b8|_al_u11243.clk
+u_motion/reg1_b4|u_motion/reg1_b5
+1557 1.849000 12.664000 10.815000 8 10
+u_motion/fifo/rg2[8] u_motion/fifo/reg2_b10|u_motion/fifo/reg1_b10.c[1]
+u_motion/fifo/n2 _al_u10518|_al_u12595.d[1]
+u_motion/fifo/n6 _al_u9882|_al_u11156.d[0]
+u_motion/fifo/n7 u_motion/fifo/sub0/u3_al_u17103.d[0]
+u_motion/fifo_level[6] u_motion/lt0_6|u_motion/lt0_5.a[1]
+u_motion/lt0_c7 u_motion/lt0_8|u_motion/lt0_7.fci
+u_motion/lt0_c9 u_motion/lt0_10|u_motion/lt0_9.fci
+u_motion/lt0_c11 u_motion/lt0_cout_al_u17389.fci
+u_motion/n7 _al_u9845|u_motion/reg0_b0.b[0]
+u_motion/mux13_b0_sel_is_2_o u_motion/reg1_b4|u_motion/reg1_b5.ce
+
+
+Endpoint: u_motion/reg1_b3|u_motion/reg1_b6
+1601 1.698000 649 3
+Timing path: u_motion/fifo/reg2_b8|_al_u11243.clk->u_motion/reg1_b3|u_motion/reg1_b6
+u_motion/fifo/reg2_b8|_al_u11243.clk
+u_motion/reg1_b3|u_motion/reg1_b6
+1603 1.698000 12.664000 10.966000 9 9
+u_motion/fifo/rg2[8] u_motion/fifo/reg2_b10|u_motion/fifo/reg1_b10.c[1]
+u_motion/fifo/n2 _al_u10518|_al_u12595.d[1]
+u_motion/fifo/n6 _al_u9882|_al_u11156.d[0]
+u_motion/fifo/n7 u_motion/fifo/sub0/u3_al_u17103.d[0]
+u_motion/fifo/sub0/c7 u_motion/fifo/sub0/u7_al_u17104.fci
+u_motion/fifo_level[9] u_motion/lt0_10|u_motion/lt0_9.a[0]
+u_motion/lt0_c11 u_motion/lt0_cout_al_u17389.fci
+u_motion/n7 _al_u9845|u_motion/reg0_b0.b[0]
+u_motion/mux13_b0_sel_is_2_o u_motion/reg1_b3|u_motion/reg1_b6.ce
+
+Timing path: u_motion/fifo/reg1_b5|u_motion/fifo/reg2_b5.clk->u_motion/reg1_b3|u_motion/reg1_b6
+u_motion/fifo/reg1_b5|u_motion/fifo/reg2_b5.clk
+u_motion/reg1_b3|u_motion/reg1_b6
+1645 1.813000 12.664000 10.851000 9 9
+u_motion/fifo/rg2[5] _al_u10517|_al_u11571.b[1]
+_al_u10517_o _al_u10518|_al_u12595.c[1]
+u_motion/fifo/n6 _al_u9882|_al_u11156.d[0]
+u_motion/fifo/n7 u_motion/fifo/sub0/u3_al_u17103.d[0]
+u_motion/fifo/sub0/c7 u_motion/fifo/sub0/u7_al_u17104.fci
+u_motion/fifo_level[9] u_motion/lt0_10|u_motion/lt0_9.a[0]
+u_motion/lt0_c11 u_motion/lt0_cout_al_u17389.fci
+u_motion/n7 _al_u9845|u_motion/reg0_b0.b[0]
+u_motion/mux13_b0_sel_is_2_o u_motion/reg1_b3|u_motion/reg1_b6.ce
+
+Timing path: u_motion/fifo/reg2_b8|_al_u11243.clk->u_motion/reg1_b3|u_motion/reg1_b6
+u_motion/fifo/reg2_b8|_al_u11243.clk
+u_motion/reg1_b3|u_motion/reg1_b6
+1687 1.849000 12.664000 10.815000 8 10
+u_motion/fifo/rg2[8] u_motion/fifo/reg2_b10|u_motion/fifo/reg1_b10.c[1]
+u_motion/fifo/n2 _al_u10518|_al_u12595.d[1]
+u_motion/fifo/n6 _al_u9882|_al_u11156.d[0]
+u_motion/fifo/n7 u_motion/fifo/sub0/u3_al_u17103.d[0]
+u_motion/fifo_level[6] u_motion/lt0_6|u_motion/lt0_5.a[1]
+u_motion/lt0_c7 u_motion/lt0_8|u_motion/lt0_7.fci
+u_motion/lt0_c9 u_motion/lt0_10|u_motion/lt0_9.fci
+u_motion/lt0_c11 u_motion/lt0_cout_al_u17389.fci
+u_motion/n7 _al_u9845|u_motion/reg0_b0.b[0]
+u_motion/mux13_b0_sel_is_2_o u_motion/reg1_b3|u_motion/reg1_b6.ce
+
+
+Endpoint: u_motion/reg1_b1|u_motion/reg1_b8
+1731 1.698000 649 3
+Timing path: u_motion/fifo/reg2_b8|_al_u11243.clk->u_motion/reg1_b1|u_motion/reg1_b8
+u_motion/fifo/reg2_b8|_al_u11243.clk
+u_motion/reg1_b1|u_motion/reg1_b8
+1733 1.698000 12.664000 10.966000 9 9
+u_motion/fifo/rg2[8] u_motion/fifo/reg2_b10|u_motion/fifo/reg1_b10.c[1]
+u_motion/fifo/n2 _al_u10518|_al_u12595.d[1]
+u_motion/fifo/n6 _al_u9882|_al_u11156.d[0]
+u_motion/fifo/n7 u_motion/fifo/sub0/u3_al_u17103.d[0]
+u_motion/fifo/sub0/c7 u_motion/fifo/sub0/u7_al_u17104.fci
+u_motion/fifo_level[9] u_motion/lt0_10|u_motion/lt0_9.a[0]
+u_motion/lt0_c11 u_motion/lt0_cout_al_u17389.fci
+u_motion/n7 _al_u9845|u_motion/reg0_b0.b[0]
+u_motion/mux13_b0_sel_is_2_o u_motion/reg1_b1|u_motion/reg1_b8.ce
+
+Timing path: u_motion/fifo/reg1_b5|u_motion/fifo/reg2_b5.clk->u_motion/reg1_b1|u_motion/reg1_b8
+u_motion/fifo/reg1_b5|u_motion/fifo/reg2_b5.clk
+u_motion/reg1_b1|u_motion/reg1_b8
+1775 1.813000 12.664000 10.851000 9 9
+u_motion/fifo/rg2[5] _al_u10517|_al_u11571.b[1]
+_al_u10517_o _al_u10518|_al_u12595.c[1]
+u_motion/fifo/n6 _al_u9882|_al_u11156.d[0]
+u_motion/fifo/n7 u_motion/fifo/sub0/u3_al_u17103.d[0]
+u_motion/fifo/sub0/c7 u_motion/fifo/sub0/u7_al_u17104.fci
+u_motion/fifo_level[9] u_motion/lt0_10|u_motion/lt0_9.a[0]
+u_motion/lt0_c11 u_motion/lt0_cout_al_u17389.fci
+u_motion/n7 _al_u9845|u_motion/reg0_b0.b[0]
+u_motion/mux13_b0_sel_is_2_o u_motion/reg1_b1|u_motion/reg1_b8.ce
+
+Timing path: u_motion/fifo/reg2_b8|_al_u11243.clk->u_motion/reg1_b1|u_motion/reg1_b8
+u_motion/fifo/reg2_b8|_al_u11243.clk
+u_motion/reg1_b1|u_motion/reg1_b8
+1817 1.849000 12.664000 10.815000 8 10
+u_motion/fifo/rg2[8] u_motion/fifo/reg2_b10|u_motion/fifo/reg1_b10.c[1]
+u_motion/fifo/n2 _al_u10518|_al_u12595.d[1]
+u_motion/fifo/n6 _al_u9882|_al_u11156.d[0]
+u_motion/fifo/n7 u_motion/fifo/sub0/u3_al_u17103.d[0]
+u_motion/fifo_level[6] u_motion/lt0_6|u_motion/lt0_5.a[1]
+u_motion/lt0_c7 u_motion/lt0_8|u_motion/lt0_7.fci
+u_motion/lt0_c9 u_motion/lt0_10|u_motion/lt0_9.fci
+u_motion/lt0_c11 u_motion/lt0_cout_al_u17389.fci
+u_motion/n7 _al_u9845|u_motion/reg0_b0.b[0]
+u_motion/mux13_b0_sel_is_2_o u_motion/reg1_b1|u_motion/reg1_b8.ce
+
+
+
+Hold check
+1861 3
+Endpoint: u_motion/fifo/ram_storage0_1024x32_sub_000000_027
+1863 0.113000 37 3
+Timing path: u_motion/fifo/reg8_b5|u_motion/fifo/reg8_b8.clk->u_motion/fifo/ram_storage0_1024x32_sub_000000_027
+u_motion/fifo/reg8_b5|u_motion/fifo/reg8_b8.clk
+u_motion/fifo/ram_storage0_1024x32_sub_000000_027
+1865 0.113000 2.162000 2.275000 1 1
+u_motion/fifo/wb[8] u_motion/fifo/ram_storage0_1024x32_sub_000000_027.addrb[11]
+
+Timing path: u_motion/fifo/reg8_b4|u_motion/fifo/reg8_b9.clk->u_motion/fifo/ram_storage0_1024x32_sub_000000_027
+u_motion/fifo/reg8_b4|u_motion/fifo/reg8_b9.clk
+u_motion/fifo/ram_storage0_1024x32_sub_000000_027
+1891 0.246000 2.162000 2.408000 1 1
+u_motion/fifo/wb[9] u_motion/fifo/ram_storage0_1024x32_sub_000000_027.addrb[12]
+
+Timing path: u_motion/fifo/reg8_b6.clk->u_motion/fifo/ram_storage0_1024x32_sub_000000_027
+u_motion/fifo/reg8_b6.clk
+u_motion/fifo/ram_storage0_1024x32_sub_000000_027
+1917 0.250000 2.162000 2.412000 1 1
+u_motion/fifo/wb[6] u_motion/fifo/ram_storage0_1024x32_sub_000000_027.addrb[9]
+
+
+Endpoint: u_motion/fifo/ram_storage0_1024x32_sub_000000_018
+1943 0.250000 37 3
+Timing path: u_motion/fifo/add0/ucin_al_u17096.clk->u_motion/fifo/ram_storage0_1024x32_sub_000000_018
+u_motion/fifo/add0/ucin_al_u17096.clk
+u_motion/fifo/ram_storage0_1024x32_sub_000000_018
+1945 0.250000 2.162000 2.412000 1 1
+u_motion/fifo/wb[0] u_motion/fifo/ram_storage0_1024x32_sub_000000_018.addrb[3]
+
+Timing path: u_motion/fifo/add0/ucin_al_u17096.clk->u_motion/fifo/ram_storage0_1024x32_sub_000000_018
+u_motion/fifo/add0/ucin_al_u17096.clk
+u_motion/fifo/ram_storage0_1024x32_sub_000000_018
+1971 0.270000 2.162000 2.432000 1 1
+u_motion/fifo/wb[1] u_motion/fifo/ram_storage0_1024x32_sub_000000_018.addrb[4]
+
+Timing path: u_motion/fifo/reg8_b4|u_motion/fifo/reg8_b9.clk->u_motion/fifo/ram_storage0_1024x32_sub_000000_018
+u_motion/fifo/reg8_b4|u_motion/fifo/reg8_b9.clk
+u_motion/fifo/ram_storage0_1024x32_sub_000000_018
+1997 0.403000 2.162000 2.565000 1 1
+u_motion/fifo/wb[4] u_motion/fifo/ram_storage0_1024x32_sub_000000_018.addrb[7]
+
+
+Endpoint: u_motion/fifo/ram_storage0_1024x32_sub_000000_009
+2023 0.258000 37 3
+Timing path: u_motion/fifo/reg8_b4|u_motion/fifo/reg8_b9.clk->u_motion/fifo/ram_storage0_1024x32_sub_000000_009
+u_motion/fifo/reg8_b4|u_motion/fifo/reg8_b9.clk
+u_motion/fifo/ram_storage0_1024x32_sub_000000_009
+2025 0.258000 2.162000 2.420000 1 1
+u_motion/fifo/wb[4] u_motion/fifo/ram_storage0_1024x32_sub_000000_009.addrb[7]
+
+Timing path: u_motion/fifo/add0/ucin_al_u17096.clk->u_motion/fifo/ram_storage0_1024x32_sub_000000_009
+u_motion/fifo/add0/ucin_al_u17096.clk
+u_motion/fifo/ram_storage0_1024x32_sub_000000_009
+2051 0.307000 2.162000 2.469000 1 1
+u_motion/fifo/wb[1] u_motion/fifo/ram_storage0_1024x32_sub_000000_009.addrb[4]
+
+Timing path: u_motion/fifo/reg8_b6.clk->u_motion/fifo/ram_storage0_1024x32_sub_000000_009
+u_motion/fifo/reg8_b6.clk
+u_motion/fifo/ram_storage0_1024x32_sub_000000_009
+2077 0.371000 2.162000 2.533000 1 1
+u_motion/fifo/wb[6] u_motion/fifo/ram_storage0_1024x32_sub_000000_009.addrb[9]
+
+
+
+Recovery check
+2103 3
+Endpoint: u_sdram_ctrl/reg6_b11|u_sdram_ctrl/reg6_b8
+2105 6.611000 1 1
+Timing path: reg1_b2|_al_u11765_placeOpt_5.clk->u_sdram_ctrl/reg6_b11|u_sdram_ctrl/reg6_b8
+reg1_b2|_al_u11765_placeOpt_5.clk
+u_sdram_ctrl/reg6_b11|u_sdram_ctrl/reg6_b8
+2107 6.611000 12.399000 5.788000 1 1
+resetmem[2]_placeOpt_5 u_sdram_ctrl/reg6_b11|u_sdram_ctrl/reg6_b8.sr
+
+
+Endpoint: u_sdram_ctrl/reg6_b4|_al_u16175
+2133 7.425000 1 1
+Timing path: reg1_b2|_al_u11765_placeOpt_5.clk->u_sdram_ctrl/reg6_b4|_al_u16175
+reg1_b2|_al_u11765_placeOpt_5.clk
+u_sdram_ctrl/reg6_b4|_al_u16175
+2135 7.425000 12.399000 4.974000 1 1
+resetmem[2]_placeOpt_5 u_sdram_ctrl/reg6_b4|_al_u16175.sr
+
+
+Endpoint: u_motion/fifo/reg8_b5|u_motion/fifo/reg8_b8
+2161 7.609000 2 2
+Timing path: reg1_b2|_al_u11765_placeOpt_10.clk->u_motion/fifo/reg8_b5|u_motion/fifo/reg8_b8
+reg1_b2|_al_u11765_placeOpt_10.clk
+u_motion/fifo/reg8_b5|u_motion/fifo/reg8_b8
+2163 7.609000 12.480000 4.871000 2 2
+resetmem[2]_placeOpt_10 u_motion/fifo/reg2_b10|u_motion/fifo/reg1_b10.a[0]
+u_motion/fifo_wr_rst u_motion/fifo/reg8_b5|u_motion/fifo/reg8_b8.sr
+
+Timing path: u_motion/reg17_b1|u_motion/reg17_b0.clk->u_motion/fifo/reg8_b5|u_motion/fifo/reg8_b8
+u_motion/reg17_b1|u_motion/reg17_b0.clk
+u_motion/fifo/reg8_b5|u_motion/fifo/reg8_b8
+2191 7.809000 12.480000 4.671000 2 2
+u_motion/active_m[1] u_motion/fifo/reg2_b10|u_motion/fifo/reg1_b10.b[0]
+u_motion/fifo_wr_rst u_motion/fifo/reg8_b5|u_motion/fifo/reg8_b8.sr
+
+
+
+Removal check
+2219 3
+Endpoint: u_video/reg48_b4
+2221 0.267000 1 1
+Timing path: reg1_b2|_al_u11765_placeOpt_3.clk->u_video/reg48_b4
+reg1_b2|_al_u11765_placeOpt_3.clk
+u_video/reg48_b4
+2223 0.267000 2.262000 2.529000 1 1
+resetmem[2]_placeOpt_3 u_video/reg48_b4.sr
+
+
+Endpoint: u_video/reg48_b3
+2249 0.267000 1 1
+Timing path: reg1_b2|_al_u11765_placeOpt_3.clk->u_video/reg48_b3
+reg1_b2|_al_u11765_placeOpt_3.clk
+u_video/reg48_b3
+2251 0.267000 2.262000 2.529000 1 1
+resetmem[2]_placeOpt_3 u_video/reg48_b3.sr
+
+
+Endpoint: u_video/reg48_b24
+2277 0.267000 1 1
+Timing path: reg1_b2|_al_u11765_placeOpt_3.clk->u_video/reg48_b24
+reg1_b2|_al_u11765_placeOpt_3.clk
+u_video/reg48_b24
+2279 0.267000 2.262000 2.529000 1 1
+resetmem[2]_placeOpt_3 u_video/reg48_b24.sr
+
+
+
+
+clock: u_pll.clkc[2]
+2305 1738130 7462 5
+Setup check
+2315 3
+Endpoint: u_motion/reg11_b14
+2315 0.172000 1877 3
+Timing path: u_motion/reg9_b11|u_motion/reg9_b8.clk->u_motion/reg11_b14
+u_motion/reg9_b11|u_motion/reg9_b8.clk
+u_motion/reg11_b14
+2317 0.172000 15.492000 15.320000 9 12
+u_motion/rate_acc[8] u_motion/add2/ucin_al_u16967.a[1]
+u_motion/add2/c3 u_motion/add2/u3_al_u16968.fci
+u_motion/add2/c7 u_motion/add2/u7_al_u16969.fci
+u_motion/add2/c11 u_motion/add2/u11_al_u16970.fci
+u_motion/add2/c15 u_motion/add2/u15_al_u16971.fci
+u_motion/rate_sum[25] u_motion/lt3_26|u_motion/lt3_25.b[0]
+u_motion/lt3_c27 u_motion/pcm_valid_reg|u_motion/lt3_27.fci
+u_motion/sample_tick reg22_b0|reg21_b0.b[1]
+u_motion/n57 _al_u11028|u_motion/reg10_b0_placeOpt_5.d[1]
+_al_u11028_o_placeOpt_5 _al_u12420|u_motion/reg13_b5.a[1]
+u_motion/mux46_b0_sel_is_3_o _al_u12822|_al_u12429.d[0]
+_al_u12429_o u_motion/reg11_b14.a[0]
+
+Timing path: u_motion/reg9_b12|u_motion/reg9_b7.clk->u_motion/reg11_b14
+u_motion/reg9_b12|u_motion/reg9_b7.clk
+u_motion/reg11_b14
+2365 0.217000 15.492000 15.275000 9 12
+u_motion/rate_acc[7] u_motion/add2/ucin_al_u16967.b[0]
+u_motion/add2/c3 u_motion/add2/u3_al_u16968.fci
+u_motion/add2/c7 u_motion/add2/u7_al_u16969.fci
+u_motion/add2/c11 u_motion/add2/u11_al_u16970.fci
+u_motion/add2/c15 u_motion/add2/u15_al_u16971.fci
+u_motion/rate_sum[25] u_motion/lt3_26|u_motion/lt3_25.b[0]
+u_motion/lt3_c27 u_motion/pcm_valid_reg|u_motion/lt3_27.fci
+u_motion/sample_tick reg22_b0|reg21_b0.b[1]
+u_motion/n57 _al_u11028|u_motion/reg10_b0_placeOpt_5.d[1]
+_al_u11028_o_placeOpt_5 _al_u12420|u_motion/reg13_b5.a[1]
+u_motion/mux46_b0_sel_is_3_o _al_u12822|_al_u12429.d[0]
+_al_u12429_o u_motion/reg11_b14.a[0]
+
+Timing path: u_motion/reg9_b11|u_motion/reg9_b8.clk->u_motion/reg11_b14
+u_motion/reg9_b11|u_motion/reg9_b8.clk
+u_motion/reg11_b14
+2413 0.295000 15.492000 15.197000 9 16
+u_motion/rate_acc[8] u_motion/add2/ucin_al_u16967.a[1]
+u_motion/add2/c3 u_motion/add2/u3_al_u16968.fci
+u_motion/rate_sum[11] u_motion/lt3_12|u_motion/lt3_11.b[0]
+u_motion/lt3_c13 u_motion/lt3_14|u_motion/lt3_13.fci
+u_motion/lt3_c15 u_motion/lt3_16|u_motion/lt3_15.fci
+u_motion/lt3_c17 u_motion/lt3_18|u_motion/lt3_17.fci
+u_motion/lt3_c19 u_motion/lt3_20|u_motion/lt3_19.fci
+u_motion/lt3_c21 u_motion/lt3_22|u_motion/lt3_21.fci
+u_motion/lt3_c23 u_motion/lt3_24|u_motion/lt3_23.fci
+u_motion/lt3_c25 u_motion/lt3_26|u_motion/lt3_25.fci
+u_motion/lt3_c27 u_motion/pcm_valid_reg|u_motion/lt3_27.fci
+u_motion/sample_tick reg22_b0|reg21_b0.b[1]
+u_motion/n57 _al_u11028|u_motion/reg10_b0_placeOpt_5.d[1]
+_al_u11028_o_placeOpt_5 _al_u12420|u_motion/reg13_b5.a[1]
+u_motion/mux46_b0_sel_is_3_o _al_u12822|_al_u12429.d[0]
+_al_u12429_o u_motion/reg11_b14.a[0]
+
+
+Endpoint: u_motion/reg12_b19
+2469 0.194000 1889 3
+Timing path: u_motion/reg9_b11|u_motion/reg9_b8.clk->u_motion/reg12_b19
+u_motion/reg9_b11|u_motion/reg9_b8.clk
+u_motion/reg12_b19
+2471 0.194000 15.492000 15.298000 9 12
+u_motion/rate_acc[8] u_motion/add2/ucin_al_u16967.a[1]
+u_motion/add2/c3 u_motion/add2/u3_al_u16968.fci
+u_motion/add2/c7 u_motion/add2/u7_al_u16969.fci
+u_motion/add2/c11 u_motion/add2/u11_al_u16970.fci
+u_motion/add2/c15 u_motion/add2/u15_al_u16971.fci
+u_motion/rate_sum[25] u_motion/lt3_26|u_motion/lt3_25.b[0]
+u_motion/lt3_c27 u_motion/pcm_valid_reg|u_motion/lt3_27.fci
+u_motion/sample_tick reg22_b0|reg21_b0.b[1]
+u_motion/n57 _al_u11028|u_motion/reg10_b0_placeOpt_5.d[1]
+_al_u11028_o_placeOpt_5 _al_u12420|u_motion/reg13_b5.a[1]
+u_motion/mux46_b0_sel_is_3_o _al_u12822|_al_u12429.d[0]
+_al_u12429_o u_motion/reg12_b19.a[1]
+
+Timing path: u_motion/reg9_b11|u_motion/reg9_b8.clk->u_motion/reg12_b19
+u_motion/reg9_b11|u_motion/reg9_b8.clk
+u_motion/reg12_b19
+2519 0.194000 15.492000 15.298000 9 12
+u_motion/rate_acc[8] u_motion/add2/ucin_al_u16967.a[1]
+u_motion/add2/c3 u_motion/add2/u3_al_u16968.fci
+u_motion/add2/c7 u_motion/add2/u7_al_u16969.fci
+u_motion/add2/c11 u_motion/add2/u11_al_u16970.fci
+u_motion/add2/c15 u_motion/add2/u15_al_u16971.fci
+u_motion/rate_sum[25] u_motion/lt3_26|u_motion/lt3_25.b[0]
+u_motion/lt3_c27 u_motion/pcm_valid_reg|u_motion/lt3_27.fci
+u_motion/sample_tick reg22_b0|reg21_b0.b[1]
+u_motion/n57 _al_u11028|u_motion/reg10_b0_placeOpt_5.d[1]
+_al_u11028_o_placeOpt_5 _al_u12420|u_motion/reg13_b5.a[1]
+u_motion/mux46_b0_sel_is_3_o _al_u12822|_al_u12429.d[0]
+_al_u12429_o u_motion/reg12_b19.a[0]
+
+Timing path: u_motion/reg9_b12|u_motion/reg9_b7.clk->u_motion/reg12_b19
+u_motion/reg9_b12|u_motion/reg9_b7.clk
+u_motion/reg12_b19
+2567 0.239000 15.492000 15.253000 9 12
+u_motion/rate_acc[7] u_motion/add2/ucin_al_u16967.b[0]
+u_motion/add2/c3 u_motion/add2/u3_al_u16968.fci
+u_motion/add2/c7 u_motion/add2/u7_al_u16969.fci
+u_motion/add2/c11 u_motion/add2/u11_al_u16970.fci
+u_motion/add2/c15 u_motion/add2/u15_al_u16971.fci
+u_motion/rate_sum[25] u_motion/lt3_26|u_motion/lt3_25.b[0]
+u_motion/lt3_c27 u_motion/pcm_valid_reg|u_motion/lt3_27.fci
+u_motion/sample_tick reg22_b0|reg21_b0.b[1]
+u_motion/n57 _al_u11028|u_motion/reg10_b0_placeOpt_5.d[1]
+_al_u11028_o_placeOpt_5 _al_u12420|u_motion/reg13_b5.a[1]
+u_motion/mux46_b0_sel_is_3_o _al_u12822|_al_u12429.d[0]
+_al_u12429_o u_motion/reg12_b19.a[1]
+
+
+Endpoint: u_motion/reg12_b4
+2615 0.281000 1857 3
+Timing path: u_motion/reg9_b11|u_motion/reg9_b8.clk->u_motion/reg12_b4
+u_motion/reg9_b11|u_motion/reg9_b8.clk
+u_motion/reg12_b4
+2617 0.281000 15.492000 15.211000 9 12
+u_motion/rate_acc[8] u_motion/add2/ucin_al_u16967.a[1]
+u_motion/add2/c3 u_motion/add2/u3_al_u16968.fci
+u_motion/add2/c7 u_motion/add2/u7_al_u16969.fci
+u_motion/add2/c11 u_motion/add2/u11_al_u16970.fci
+u_motion/add2/c15 u_motion/add2/u15_al_u16971.fci
+u_motion/rate_sum[25] u_motion/lt3_26|u_motion/lt3_25.b[0]
+u_motion/lt3_c27 u_motion/pcm_valid_reg|u_motion/lt3_27.fci
+u_motion/sample_tick reg22_b0|reg21_b0.b[1]
+u_motion/n57 _al_u11028|u_motion/reg10_b0_placeOpt_5.d[1]
+_al_u11028_o_placeOpt_5 _al_u12420|u_motion/reg13_b5.a[1]
+u_motion/mux46_b0_sel_is_3_o _al_u12822|_al_u12429.d[0]
+_al_u12429_o u_motion/reg12_b4.a[1]
+
+Timing path: u_motion/reg9_b11|u_motion/reg9_b8.clk->u_motion/reg12_b4
+u_motion/reg9_b11|u_motion/reg9_b8.clk
+u_motion/reg12_b4
+2665 0.281000 15.492000 15.211000 9 12
+u_motion/rate_acc[8] u_motion/add2/ucin_al_u16967.a[1]
+u_motion/add2/c3 u_motion/add2/u3_al_u16968.fci
+u_motion/add2/c7 u_motion/add2/u7_al_u16969.fci
+u_motion/add2/c11 u_motion/add2/u11_al_u16970.fci
+u_motion/add2/c15 u_motion/add2/u15_al_u16971.fci
+u_motion/rate_sum[25] u_motion/lt3_26|u_motion/lt3_25.b[0]
+u_motion/lt3_c27 u_motion/pcm_valid_reg|u_motion/lt3_27.fci
+u_motion/sample_tick reg22_b0|reg21_b0.b[1]
+u_motion/n57 _al_u11028|u_motion/reg10_b0_placeOpt_5.d[1]
+_al_u11028_o_placeOpt_5 _al_u12420|u_motion/reg13_b5.a[1]
+u_motion/mux46_b0_sel_is_3_o _al_u12822|_al_u12429.d[0]
+_al_u12429_o u_motion/reg12_b4.a[0]
+
+Timing path: u_motion/reg9_b12|u_motion/reg9_b7.clk->u_motion/reg12_b4
+u_motion/reg9_b12|u_motion/reg9_b7.clk
+u_motion/reg12_b4
+2713 0.326000 15.492000 15.166000 9 12
+u_motion/rate_acc[7] u_motion/add2/ucin_al_u16967.b[0]
+u_motion/add2/c3 u_motion/add2/u3_al_u16968.fci
+u_motion/add2/c7 u_motion/add2/u7_al_u16969.fci
+u_motion/add2/c11 u_motion/add2/u11_al_u16970.fci
+u_motion/add2/c15 u_motion/add2/u15_al_u16971.fci
+u_motion/rate_sum[25] u_motion/lt3_26|u_motion/lt3_25.b[0]
+u_motion/lt3_c27 u_motion/pcm_valid_reg|u_motion/lt3_27.fci
+u_motion/sample_tick reg22_b0|reg21_b0.b[1]
+u_motion/n57 _al_u11028|u_motion/reg10_b0_placeOpt_5.d[1]
+_al_u11028_o_placeOpt_5 _al_u12420|u_motion/reg13_b5.a[1]
+u_motion/mux46_b0_sel_is_3_o _al_u12822|_al_u12429.d[0]
+_al_u12429_o u_motion/reg12_b4.a[1]
+
+
+
+Hold check
+2761 3
+Endpoint: u_motion/fifo/ram_storage0_1024x32_sub_000000_027
+2763 0.104000 61 3
+Timing path: u_motion/fifo/reg3_b2|u_motion/fifo/reg3_b9.clk->u_motion/fifo/ram_storage0_1024x32_sub_000000_027
+u_motion/fifo/reg3_b2|u_motion/fifo/reg3_b9.clk
+u_motion/fifo/ram_storage0_1024x32_sub_000000_027
+2765 0.104000 2.253000 2.357000 1 1
+u_motion/fifo/rb[9] u_motion/fifo/ram_storage0_1024x32_sub_000000_027.addra[12]
+
+Timing path: u_motion/fifo/reg3_b3|u_motion/fifo/reg3_b8.clk->u_motion/fifo/ram_storage0_1024x32_sub_000000_027
+u_motion/fifo/reg3_b3|u_motion/fifo/reg3_b8.clk
+u_motion/fifo/ram_storage0_1024x32_sub_000000_027
+2791 0.146000 2.253000 2.399000 1 1
+u_motion/fifo/rb[8] u_motion/fifo/ram_storage0_1024x32_sub_000000_027.addra[11]
+
+Timing path: u_motion/fifo/reg3_b4|u_motion/fifo/reg3_b7.clk->u_motion/fifo/ram_storage0_1024x32_sub_000000_027
+u_motion/fifo/reg3_b4|u_motion/fifo/reg3_b7.clk
+u_motion/fifo/ram_storage0_1024x32_sub_000000_027
+2817 0.155000 2.253000 2.408000 1 1
+u_motion/fifo/rb[7] u_motion/fifo/ram_storage0_1024x32_sub_000000_027.addra[10]
+
+
+Endpoint: u_motion/fifo/ram_storage0_1024x32_sub_000000_018
+2843 0.104000 61 3
+Timing path: u_motion/fifo/add1/ucin_al_u17099.clk->u_motion/fifo/ram_storage0_1024x32_sub_000000_018
+u_motion/fifo/add1/ucin_al_u17099.clk
+u_motion/fifo/ram_storage0_1024x32_sub_000000_018
+2845 0.104000 2.253000 2.357000 1 1
+u_motion/fifo/rb[0] u_motion/fifo/ram_storage0_1024x32_sub_000000_018.addra[3]
+
+Timing path: u_motion/fifo/add1/ucin_al_u17099.clk->u_motion/fifo/ram_storage0_1024x32_sub_000000_018
+u_motion/fifo/add1/ucin_al_u17099.clk
+u_motion/fifo/ram_storage0_1024x32_sub_000000_018
+2871 0.104000 2.253000 2.357000 1 1
+u_motion/fifo/rb[1] u_motion/fifo/ram_storage0_1024x32_sub_000000_018.addra[4]
+
+Timing path: u_motion/fifo/reg3_b2|u_motion/fifo/reg3_b9.clk->u_motion/fifo/ram_storage0_1024x32_sub_000000_018
+u_motion/fifo/reg3_b2|u_motion/fifo/reg3_b9.clk
+u_motion/fifo/ram_storage0_1024x32_sub_000000_018
+2897 0.250000 2.253000 2.503000 1 1
+u_motion/fifo/rb[2] u_motion/fifo/ram_storage0_1024x32_sub_000000_018.addra[5]
+
+
+Endpoint: u_scope/al_ram_wave1_r11_c1_l
+2923 0.212000 953 3
+Timing path: u_scope/reg2_b0|u_scope/reg2_b3.clk->u_scope/al_ram_wave1_r11_c1_l
+u_scope/reg2_b0|u_scope/reg2_b3.clk
+u_scope/al_ram_wave1_r11_c1_l
+2925 0.212000 2.187000 2.399000 1 1
+u_scope/index[0] u_scope/al_ram_wave1_r11_c1_l.a[0]
+
+Timing path: u_scope/reg2_b1|u_scope/reg2_b2.clk->u_scope/al_ram_wave1_r11_c1_l
+u_scope/reg2_b1|u_scope/reg2_b2.clk
+u_scope/al_ram_wave1_r11_c1_l
+2951 0.346000 2.187000 2.533000 1 1
+u_scope/index[1] u_scope/al_ram_wave1_r11_c1_l.b[0]
+
+Timing path: u_scope/reg2_b0|u_scope/reg2_b3.clk->u_scope/al_ram_wave1_r11_c1_l
+u_scope/reg2_b0|u_scope/reg2_b3.clk
+u_scope/al_ram_wave1_r11_c1_l
+2977 0.347000 2.187000 2.534000 1 1
+u_scope/index[3] u_scope/al_ram_wave1_r11_c1_l.d[0]
+
+
+
+Recovery check
+3003 3
+Endpoint: u_scope/reg4_b1|u_scope/reg4_b3_placeOpt_9_al_u17534
+3005 9.888000 1 1
+Timing path: reg0_b1|reg0_b2_placeOpt_16.clk->u_scope/reg4_b1|u_scope/reg4_b3_placeOpt_9_al_u17534
+reg0_b1|reg0_b2_placeOpt_16.clk
+u_scope/reg4_b1|u_scope/reg4_b3_placeOpt_9_al_u17534
+3007 9.888000 15.227000 5.339000 1 1
+reset75[2]_placeOpt_16 u_scope/reg4_b1|u_scope/reg4_b3_placeOpt_9_al_u17534.sr
+
+
+Endpoint: u_motion/pcm_valid_reg|u_motion/lt3_27
+3033 9.932000 1 1
+Timing path: reg0_b1|reg0_b2_placeOpt_15.clk->u_motion/pcm_valid_reg|u_motion/lt3_27
+reg0_b1|reg0_b2_placeOpt_15.clk
+u_motion/pcm_valid_reg|u_motion/lt3_27
+3035 9.932000 15.308000 5.376000 1 1
+reset75[2]_placeOpt_15 u_motion/pcm_valid_reg|u_motion/lt3_27.sr
+
+
+Endpoint: u_motion/fifo/reg6_b8|u_motion/fifo/reg5_b8
+3061 10.022000 3 3
+Timing path: _al_u11624|display_en_reg.clk->u_motion/fifo/reg6_b8|u_motion/fifo/reg5_b8
+_al_u11624|display_en_reg.clk
+u_motion/fifo/reg6_b8|u_motion/fifo/reg5_b8
+3063 10.022000 15.308000 5.286000 3 3
+led3_pad u_motion/reg17_b1|u_motion/reg17_b0_placeOpt_11.d[0]
+n117_placeOpt_11 u_motion/fifo/reg4_b9|u_motion/fifo/reg3_b10.b[0]
+u_motion/fifo_rd_rst u_motion/fifo/reg6_b8|u_motion/fifo/reg5_b8.sr
+
+Timing path: _al_u11630|display_motion_reg.clk->u_motion/fifo/reg6_b8|u_motion/fifo/reg5_b8
+_al_u11630|display_motion_reg.clk
+u_motion/fifo/reg6_b8|u_motion/fifo/reg5_b8
+3093 10.130000 15.308000 5.178000 3 3
+display_motion u_motion/reg17_b1|u_motion/reg17_b0_placeOpt_11.c[0]
+n117_placeOpt_11 u_motion/fifo/reg4_b9|u_motion/fifo/reg3_b10.b[0]
+u_motion/fifo_rd_rst u_motion/fifo/reg6_b8|u_motion/fifo/reg5_b8.sr
+
+Timing path: reg0_b1|reg0_b2_placeOpt_22.clk->u_motion/fifo/reg6_b8|u_motion/fifo/reg5_b8
+reg0_b1|reg0_b2_placeOpt_22.clk
+u_motion/fifo/reg6_b8|u_motion/fifo/reg5_b8
+3123 10.747000 15.308000 4.561000 2 2
+reset75[2]_placeOpt_22 u_motion/fifo/reg4_b9|u_motion/fifo/reg3_b10.a[0]
+u_motion/fifo_rd_rst u_motion/fifo/reg6_b8|u_motion/fifo/reg5_b8.sr
+
+
+
+Removal check
+3151 3
+Endpoint: _al_u10349|u_osd/cover_l_reg
+3153 0.156000 1 1
+Timing path: reg0_b1|reg0_b2_placeOpt_12.clk->_al_u10349|u_osd/cover_l_reg
+reg0_b1|reg0_b2_placeOpt_12.clk
+_al_u10349|u_osd/cover_l_reg
+3155 0.156000 2.353000 2.509000 1 1
+reset75[2]_placeOpt_12 _al_u10349|u_osd/cover_l_reg.sr
+
+
+Endpoint: u_osd/bw/reg2_b0|u_osd/bw/reg2_b1
+3181 0.166000 1 1
+Timing path: reg0_b1|reg0_b2_placeOpt_12.clk->u_osd/bw/reg2_b0|u_osd/bw/reg2_b1
+reg0_b1|reg0_b2_placeOpt_12.clk
+u_osd/bw/reg2_b0|u_osd/bw/reg2_b1
+3183 0.166000 2.353000 2.519000 1 1
+reset75[2]_placeOpt_12 u_osd/bw/reg2_b0|u_osd/bw/reg2_b1.sr
+
+
+Endpoint: _al_u10347|u_video/reg8_b9
+3209 0.166000 1 1
+Timing path: reg0_b1|reg0_b2_placeOpt_12.clk->_al_u10347|u_video/reg8_b9
+reg0_b1|reg0_b2_placeOpt_12.clk
+_al_u10347|u_video/reg8_b9
+3211 0.166000 2.353000 2.519000 1 1
+reset75[2]_placeOpt_12 _al_u10347|u_video/reg8_b9.sr
+
+
+
+Period check
+3237 2
+Endpoint: u_video/mult0_.clk
+3241 10.054000 1 0
+
+Endpoint: u_video/mult1_.clk
+3242 10.054000 1 0
+
+
+
+clock: u_pll.clkc[3]
+3243 0 0 0
+
+clock: u_refpll.refclk
+3254 0 0 0
+
+clock: u_refpll.clkc[0]
+3265 0 0 0
+
+Path delay: 7.5ns max
+3276 115 31 1
+Max path
+3286 3
+Endpoint: u_serializer/reg3_b0|u_serializer/reg3_b2
+3286 3.417000 3 3
+Timing path: u_osd/reg35_b2|u_hdmi/special_reg.clk->u_serializer/reg3_b0|u_serializer/reg3_b2
+u_osd/reg35_b2|u_hdmi/special_reg.clk
+u_serializer/reg3_b0|u_serializer/reg3_b2
+3288 0.724000 7.500000 6.776000 1 1
+u_hdmi/special u_serializer/reg3_b0|u_serializer/reg3_b2.a[1]
+
+Timing path: u_hdmi/eb/reg1_b0|u_hdmi/eb/reg1_b1.clk->u_serializer/reg3_b0|u_serializer/reg3_b2
+u_hdmi/eb/reg1_b0|u_hdmi/eb/reg1_b1.clk
+u_serializer/reg3_b0|u_serializer/reg3_b2
+3309 1.451000 7.500000 6.049000 1 1
+u_hdmi/encoded_b[0] u_serializer/reg3_b0|u_serializer/reg3_b2.c[1]
+
+Timing path: u_hdmi/mux55_b0_rom0|u_hdmi/reg15_b0.clk->u_serializer/reg3_b0|u_serializer/reg3_b2
+u_hdmi/mux55_b0_rom0|u_hdmi/reg15_b0.clk
+u_serializer/reg3_b0|u_serializer/reg3_b2
+3330 1.520000 7.500000 5.980000 1 1
+u_hdmi/special_b[0] u_serializer/reg3_b0|u_serializer/reg3_b2.e[1]
+
+
+Endpoint: u_serializer/reg4_b3|u_serializer/reg3_b6
+3351 3.484000 6 3
+Timing path: u_osd/reg35_b2|u_hdmi/special_reg.clk->u_serializer/reg4_b3|u_serializer/reg3_b6
+u_osd/reg35_b2|u_hdmi/special_reg.clk
+u_serializer/reg4_b3|u_serializer/reg3_b6
+3353 0.791000 7.500000 6.709000 1 1
+u_hdmi/special u_serializer/reg4_b3|u_serializer/reg3_b6.c[1]
+
+Timing path: u_osd/reg35_b2|u_hdmi/special_reg.clk->u_serializer/reg4_b3|u_serializer/reg3_b6
+u_osd/reg35_b2|u_hdmi/special_reg.clk
+u_serializer/reg4_b3|u_serializer/reg3_b6
+3374 0.791000 7.500000 6.709000 1 1
+u_hdmi/special u_serializer/reg4_b3|u_serializer/reg3_b6.c[0]
+
+Timing path: u_hdmi/mux55_b6_rom0|u_hdmi/reg15_b6.clk->u_serializer/reg4_b3|u_serializer/reg3_b6
+u_hdmi/mux55_b6_rom0|u_hdmi/reg15_b6.clk
+u_serializer/reg4_b3|u_serializer/reg3_b6
+3395 1.257000 7.500000 6.243000 1 1
+u_hdmi/special_b[6] u_serializer/reg4_b3|u_serializer/reg3_b6.b[1]
+
+
+Endpoint: u_serializer/reg2_b1
+3416 3.486000 6 3
+Timing path: u_osd/reg35_b2|u_hdmi/special_reg.clk->u_serializer/reg2_b1
+u_osd/reg35_b2|u_hdmi/special_reg.clk
+u_serializer/reg2_b1
+3418 0.793000 7.500000 6.707000 1 1
+u_hdmi/special u_serializer/reg2_b1.c[1]
+
+Timing path: u_osd/reg35_b2|u_hdmi/special_reg.clk->u_serializer/reg2_b1
+u_osd/reg35_b2|u_hdmi/special_reg.clk
+u_serializer/reg2_b1
+3439 0.793000 7.500000 6.707000 1 1
+u_hdmi/special u_serializer/reg2_b1.c[0]
+
+Timing path: u_hdmi/eg/reg1_b1|u_hdmi/eg/reg1_b3.clk->u_serializer/reg2_b1
+u_hdmi/eg/reg1_b1|u_hdmi/eg/reg1_b3.clk
+u_serializer/reg2_b1
+3460 1.022000 7.500000 6.478000 1 1
+u_hdmi/encoded_g[1] u_serializer/reg2_b1.a[1]
+
+
+
+
+
+Timing group statistics: 
+	Clock constraints: 
+	  Clock Name                                  Min Period     Max Freq           Skew      Fanout            TNS
+	  clk50 (50.000MHz)                             15.550ns      64.309MHz        0.399ns      1997        0.000ns
+	  u_pll.clkc[2] (74.250MHz)                     13.296ns      75.211MHz        0.587ns      1474        0.000ns
+	  u_pll.clkc[1] (92.816MHz)                      9.076ns     110.181MHz        0.491ns       432        0.000ns
+	  u_pll.clkc[0] (371.333MHz)                     1.970ns     507.614MHz        0.491ns        27        0.000ns
+	Minimum input arrival time before clock: no constraint path
+	Maximum output required time after clock: no constraint path
+	Maximum combinational path delay: no constraint path
+
+	Exceptions:
+		Check Type:	MAX
+		----------------------------------------------------------------------------------------------------
+		       Path Num     Constraint                                                                      
+		           8265     set_false_path -from [ get_clocks {clk50} ] -to [ get_clocks {u_pll.clkc[1]} ]  
+		              1     set_false_path -from [ get_clocks {u_pll.clkc[1]} ] -to [ get_clocks {clk50} ]  
+		           8636     set_false_path -from [ get_clocks {clk50} ] -to [ get_clocks {u_pll.clkc[2]} ]  
+		              2     set_false_path -from [ get_clocks {u_pll.clkc[2]} ] -to [ get_clocks {clk50} ]  
+		             35     set_false_path -from [ get_clocks {u_pll.clkc[1]} ] -to [ get_clocks {u_pll.clkc[2]} ]
+		             85     set_false_path -from [ get_clocks {u_pll.clkc[2]} ] -to [ get_clocks {u_pll.clkc[1]} ]
+
+		Check Type:	MIN
+		----------------------------------------------------------------------------------------------------
+		       Path Num     Constraint                                                                      
+		           8265     set_false_path -from [ get_clocks {clk50} ] -to [ get_clocks {u_pll.clkc[1]} ]  
+		              1     set_false_path -from [ get_clocks {u_pll.clkc[1]} ] -to [ get_clocks {clk50} ]  
+		           8636     set_false_path -from [ get_clocks {clk50} ] -to [ get_clocks {u_pll.clkc[2]} ]  
+		              2     set_false_path -from [ get_clocks {u_pll.clkc[2]} ] -to [ get_clocks {clk50} ]  
+		             35     set_false_path -from [ get_clocks {u_pll.clkc[1]} ] -to [ get_clocks {u_pll.clkc[2]} ]
+		             85     set_false_path -from [ get_clocks {u_pll.clkc[2]} ] -to [ get_clocks {u_pll.clkc[1]} ]
+

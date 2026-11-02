@@ -2,7 +2,7 @@
 // Full-resolution, double-line-buffered picture reader. Pixel/OSD coordinates
 // and RGB565 emerge together after two registered cycles; no CAL_X correction.
 module video_reader #(
- parameter VIEW_X=32, VIEW_Y=96, VIEW_W=960, VIEW_H=540
+ parameter VIEW_X=32, VIEW_Y=96, VIEW_W=960, VIEW_H=540, EXPLICIT_BASE=0
 )(
  input wire pclk,mclk,prst_n,mrst_n,
  input wire valid,frame_bank, input wire [11:0] img_w,img_h,
@@ -13,7 +13,8 @@ module video_reader #(
  output reg line_req,output reg [20:0] line_base,
  output reg [9:0] line_words,
  input wire [31:0] line_data,input wire line_we,line_done,
- output reg [15:0] underflows
+ output reg [15:0] underflows,
+ input wire [20:0] frame_base,input wire compressed
 );
  reg [10:0] hx;reg [9:0] vy;
  assign vblank_commit=(hx==0 && vy==724);
@@ -96,23 +97,26 @@ module video_reader #(
  wire [9:0] stride=img_w[10:1];
  reg [9:0] row_candidate;
  reg [11:0] memory_row_r;
- reg [20:0] row_address;
+ reg [20:0] row_address;reg [1:0] row_sub;
  always @(posedge pclk or negedge prst_n)begin
-  if(!prst_n)begin row_candidate<=0;memory_row_r<=0;row_address<=0;end
+  if(!prst_n)begin row_candidate<=0;memory_row_r<=0;row_address<=0;row_sub<=0;end
   else begin
    row_candidate<=next_row+crop_top;
    memory_row_r<=topdown ? {2'd0,row_candidate} : img_h-12'd1-{2'd0,row_candidate};
-   row_address<=memory_row_r*stride;
+   row_address<=(compressed ? (memory_row_r>>2) : memory_row_r)*stride;row_sub<=memory_row_r[1:0];
   end
  end
 
  reg command_toggle;
  reg [20:0] command_base;
  reg [9:0] command_words,command_y;
- reg command_bank,command_epoch;
+ reg command_bank,command_epoch,command_compressed;reg [1:0] command_row;
  reg [2:0] command_sync;
  reg [9:0] write_addr;
- reg write_bank,write_epoch;
+ reg write_bank,write_epoch,write_compressed;reg [1:0] write_row;
+ reg [31:0] block_endpoints,second_pixels;reg second_pending;reg [9:0] second_addr;
+ wire [31:0] decoded01,decoded23;
+ bc1_row_decode u_block(mclk,block_endpoints,line_data,write_row,decoded01,decoded23);
  reg [9:0] write_y;
  reg [2:0] engine;
  reg [10:0] received;
@@ -127,7 +131,7 @@ module video_reader #(
   if(!prst_n)begin
    hx<=0;vy<=0;x<=0;y<=0;x1<=0;y1<=0;pixel<=0;
    xacc<=0;sx<=0;vacc<=0;source_row<=0;
-   command_toggle<=0;command_base<=0;command_words<=0;command_y<=0;command_bank<=0;command_epoch<=0;
+   command_toggle<=0;command_base<=0;command_words<=0;command_y<=0;command_bank<=0;command_epoch<=0;command_compressed<=0;command_row<=0;
    half1<=0;bank1<=0;active1<=0;
    tag0a<=0;tag0b<=0;tag1a<=0;tag1b<=0;underflows<=0;
   end else begin
@@ -140,9 +144,9 @@ module video_reader #(
    pixel<=active1 ? (half1 ? (bank1?q1[31:16]:q0[31:16]) : (bank1?q1[15:0]:q0[15:0])) : 16'h0000;
    if(hx==500)begin
     if(fetch_line)begin
-     command_base<=(frame_bank ? 21'd524288 : 21'd0)+row_address;
+     command_base<=(EXPLICIT_BASE ? frame_base : (frame_bank ? 21'd524288 : 21'd0))+row_address;
      command_words<=stride;command_y<=target_y;
-     command_bank<=target_y[0];command_epoch<=frame_bank;
+     command_bank<=target_y[0];command_epoch<=frame_bank;command_compressed<=compressed;command_row<=row_sub;
      if(valid)command_toggle<=~command_toggle;
      source_row<=next_row;
      vacc<=first_source_line ? 12'd0 : yresidue[11:0];
@@ -153,24 +157,35 @@ module video_reader #(
  end
  // One synchronous BRAM read. Both pixel half and coordinates have the same latency.
  always @(posedge pclk)begin q0<=lb0[sx[10:1]];q1<=lb1[sx[10:1]];end
+ wire lb_write=second_pending || (line_we && engine==1 && write_addr<640 && (!write_compressed || write_addr[0]));
+ wire [9:0] lb_address=second_pending ? second_addr : ((write_compressed && write_addr[0]) ? write_addr-10'd1 : write_addr);
+ wire [31:0] lb_data=second_pending ? second_pixels : (write_compressed ? decoded01 : line_data);
+ // Exactly one inferred write port per line RAM; select address/data BEFORE RAM.
  always @(posedge mclk)begin
-  if(line_we && engine==1 && write_addr<640)begin
-   if(write_bank)lb1[write_addr]<=line_data;else lb0[write_addr]<=line_data;
+  if(lb_write)begin
+   if(write_bank)lb1[lb_address]<=lb_data;else lb0[lb_address]<=lb_data;
   end
  end
  always @(posedge mclk or negedge mrst_n)begin
   if(!mrst_n)begin
    command_sync<=0;engine<=0;line_req<=0;line_base<=0;line_words<=0;
+   write_compressed<=0;write_row<=0;block_endpoints<=0;second_pixels<=0;second_pending<=0;second_addr<=0;
    write_addr<=0;write_bank<=0;write_y<=0;write_epoch<=0;received<=0;tag0<=0;tag1<=0;
   end else begin
-   command_sync<={command_sync[1:0],command_toggle};
+   command_sync<={command_sync[1:0],command_toggle};second_pending<=0;
    case(engine)
     0:if(command_sync[2]^command_sync[1])begin
      line_base<=command_base;line_words<=command_words;write_bank<=command_bank;
-     write_y<=command_y;write_epoch<=command_epoch;write_addr<=0;received<=0;line_req<=1;engine<=1;
+     write_y<=command_y;write_epoch<=command_epoch;write_compressed<=command_compressed;write_row<=command_row;write_addr<=0;received<=0;line_req<=1;engine<=1;
     end
     1:begin
-     if(line_we)begin write_addr<=write_addr+1'b1;received<=received+1'b1;end
+     if(line_we)begin
+      write_addr<=write_addr+1'b1;received<=received+1'b1;
+      if(write_compressed)begin
+       if(!write_addr[0])block_endpoints<=line_data;
+       else begin second_pixels<=decoded23;second_addr<=write_addr;second_pending<=1;end
+      end
+     end
      if(line_done)begin line_req<=0;engine<=2;end
     end
     2:begin

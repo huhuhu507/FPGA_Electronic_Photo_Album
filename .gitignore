@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+xsim.dir/
+*.jou
+*.pb
+*.log
+*.rar
+*.zip
+tests/osd_frame.hex
+media/
+SD_CARD/

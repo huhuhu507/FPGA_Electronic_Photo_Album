@@ -1,0 +1,8 @@
+﻿HDMI packet layouts, streaming BCH calculation and TERC4/guard-band constants
+are adapted from hdl-util/hdmi, by Sameer Puri, under its MIT license.
+Upstream: https://github.com/hdl-util/hdmi
+Reference commit: 83b1c9543a91b776671a44e68e130f81cae437b7
+This project implements a distinct Verilog-2001 scheduler with same-clock PCM
+FIFO and one sample per packet for Anlogic TD. Retain LICENSE-MIT when sharing.
+This disclosure must remain in the contest submission: do not claim the
+referenced HDMI encoding/packet conventions as a new algorithm.

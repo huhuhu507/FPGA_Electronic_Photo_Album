@@ -9,15 +9,17 @@ module signage_osd #(parameter PIXEL_HZ=74250000)(
  input wire [11:0] image_width,image_height,
  input wire [5:0] wave_sample,wave_previous,input wire audio_active,
  output wire [7:0] wave_x,
- output reg [15:0] rgb,output reg [10:0] out_x,output reg [9:0] out_y);
+ output reg [15:0] rgb,output reg [10:0] out_x,output reg [9:0] out_y,
+ input wire motion_mode,input wire [7:0] read_divider,input wire [11:0] load_deciseconds);
  wire frame_tick=(x==0 && y==724);
- reg sd_l,scan_l,busy_l,auto_l,valid_l,bmode_l,test_l,audio_l,cover_l;
+ reg sd_l,scan_l,busy_l,auto_l,valid_l,bmode_l,test_l,audio_l,cover_l,motion_l;
  reg [2:0] index_l;reg [3:0] count_l,error_l;reg [4:0] bright_l;reg [9:0] progress_l;
  always @(posedge clk or negedge rst_n)begin
-  if(!rst_n)begin sd_l<=0;scan_l<=0;busy_l<=0;auto_l<=1;valid_l<=0;bmode_l<=0;test_l<=0;audio_l<=0;cover_l<=1;index_l<=0;count_l<=0;error_l<=0;bright_l<=16;progress_l<=0;end
-  else if(frame_tick)begin sd_l<=sd_ready;scan_l<=scan_done;busy_l<=busy;auto_l<=auto_en;valid_l<=valid;bmode_l<=bright_mode;test_l<=test_mode;audio_l<=audio_active;cover_l<=cover_mode;index_l<=image_index;count_l<=image_count;error_l<=error;bright_l<=brightness;progress_l<=progress;end
+  if(!rst_n)begin sd_l<=0;motion_l<=0;scan_l<=0;busy_l<=0;auto_l<=1;valid_l<=0;bmode_l<=0;test_l<=0;audio_l<=0;cover_l<=1;index_l<=0;count_l<=0;error_l<=0;bright_l<=16;progress_l<=0;end
+  else if(frame_tick)begin sd_l<=sd_ready;motion_l<=motion_mode;scan_l<=scan_done;busy_l<=busy;auto_l<=auto_en;valid_l<=valid;bmode_l<=bright_mode;test_l<=test_mode;audio_l<=audio_active;cover_l<=cover_mode;index_l<=image_index;count_l<=image_count;error_l<=error;bright_l<=brightness;progress_l<=progress;end
  end
- wire [15:0] width_bcd,height_bcd;
+ wire [15:0] width_bcd,height_bcd,load_bcd;
+ number_bcd bt(clk,rst_n,frame_tick,load_deciseconds,load_bcd);
  number_bcd bw(clk,rst_n,frame_tick,image_width,width_bcd);
  number_bcd bh(clk,rst_n,frame_tick,image_height,height_bcd);
  reg [26:0] second_div;reg [7:0] seconds,minutes,hours;
@@ -102,6 +104,23 @@ module signage_osd #(parameter PIXEL_HZ=74250000)(
  always @* begin
   address=0;column=0;font_y=0;tone=0;context=0;text_on=0;override_on=0;override_code=0;char_index=0;
   case(1'b1) // synthesis parallel_case
+  x>=480 && x<648 && y>=32 && y<48:begin
+   text_on=1;override_on=1;column=(x-480)&7;font_y=y-32;tone=1;char_index=(x-480)>>3;
+   // SD 25.0M  LOAD 001.2S (last completed load; time is measured on board).
+   case(char_index)
+    0:override_code=51;1:override_code=36;
+    3:override_code=(read_divider<=1)?18:(read_divider==2)?17:16;
+    4:override_code=(read_divider==2)?18:21;5:override_code=14;
+    6:override_code=(read_divider==2)?21:16;7:override_code=45;
+    10:override_code=44;11:override_code=47;12:override_code=33;13:override_code=36;
+    15:override_code=16+load_bcd[15:12];16:override_code=16+load_bcd[11:8];17:override_code=16+load_bcd[7:4];
+    18:override_code=14;19:override_code=16+load_bcd[3:0];20:override_code=51;default:override_code=0;
+   endcase
+  end
+  (motion_l) && x>=1160 && x<1192 && y>=192 && y<208:begin
+   text_on=1;override_on=1;column=(x-1160)&7;font_y=y-192;tone=2;char_index=(x-1160)>>3;
+   case(char_index)0:override_code=33;1:override_code=46;2:override_code=41;3:override_code=45;endcase
+  end
   (1'b1) && x>=80 && x<144 && y>=24 && y<56:begin
    text_on=1;address=0+((x-11'd80) >> 4);column=(((x-11'd80) >> 1) & 11'd7);font_y=(((y-10'd24) >> 1) & 10'd15);tone=2'd0;context=2'd0;char_index=((x-11'd80) >> 4);
   end
